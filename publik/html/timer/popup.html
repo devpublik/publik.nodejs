@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Timer</title>
+<link rel="stylesheet" type="text/css" href="css/timer.css"> 
+</head>
+<body >
+
+	<div  style="width: 305px;text-align: center;">
+				<div id="sparklinesExample"></div>
+	</div>
+	<div id="countdown-blog" style="width: 305px;height: 90px;" ></div>
+	<div id="sound" >		
+	</div>
+	
+	<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.sparkline.min.js"></script>
+		<script type="text/javascript" src="../js/urlParam.js"></script>
+		<script type="text/javascript" src="../js/dateFormat.js"></script>
+		<script type="text/javascript" src="../js/countdown.js"></script>
+	<script type="text/javascript">
+		var heure = 0,
+		 minute = 1;
+		
+		function updatePieCharte(oldValue,tranche){
+			  var nonfait = 360 - oldValue;
+			  
+			  $('#sparklinesExample').html(oldValue+ ','+nonfait);
+			    $('#sparklinesExample').sparkline('html', { type: 'pie', 
+			    	sliceColors :["red","green"],
+			    	offset : "-90",
+			    	height: '160px',enableTagOptions:false});
+			    	
+			var newValue = oldValue+6;
+			
+		
+			
+			if(newValue <=360 && tranche){				
+				setTimeout(function(){ updatePieCharte(newValue,tranche)},tranche);
+			}
+			
+			if(newValue > 360){
+				
+				var divSOund = $("#sound");
+				
+				divSOund.html("<div><a class='boutonfermer' class='' href=''#' onclick='window.close();'>Fermer</a></div><div><AUDIO controls autoplay loop><source src='sound/canard-sauvage.mp3' ></source> </AUDIO></div>");
+				divSOund.show();
+				
+			}
+			
+		}	
+		
+	
+	
+		$(document).ready(
+				function() {
+					
+					heure = $.getUrlVar('heure');
+					console.log("heure : " + heure);
+					
+					minute = $.getUrlVar('minute');
+					console.log("minute : " + minute);
+					var totalExercice = (heure *60*60+minute*60)*1000;
+					var tranche = totalExercice /60;
+					
+					updatePieCharte(0,tranche)	;
+					// Start it up
+					initialDigitCheckCountdown(theDiffStringCountdown);
+					setInterval(	doCountCountdown, paceCountdown);
+					
+				}); 
+	</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+.explorer td {
+  text-align: center;  
+}
+
+.icone-liste {
+  width: 75px;  
+}
+
+#holder { border: 5px dashed #cccccc; width: 200px; height: 200px; margin: 20px auto;}
+#holder.hover { border: 5px dashed #333333; }

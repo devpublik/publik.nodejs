@@ -1,0 +1,210 @@
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>Timer</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap-responsive.min.css">
+	<link rel="stylesheet" type="text/css" href="css/timer.css">
+	<link rel="stylesheet" type="text/css" href="../css/publik.css">
+</head>
+<body >
+<div id="menu" ></div>
+
+      <form class="form-horizontal " action="#" >
+        <fieldset>
+          <div class="control-group" style="vertical-align: top;">
+            <label class="control-label" for="heure">Heure : </label>
+            <div class="controls">
+              <input type="text" class="input-mini heigthInputs"  id="heure" maxlength="2" value="00">
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="minute">Minute : </label>
+            <div class="controls">
+              <input type="text" class="input-mini heigthInputs"  id="minute" maxlength="2" value="30">
+              <p class="help-block">Merci de préciser le temps de l'exercice (HH24:MI).</p>
+            </div>
+          </div>
+           <div class="control-group" style="vertical-align:bottom; ;" >
+            <label class="control-label" for="soundSelect">Sonnerie : </label>
+            <div class="controls">
+              <select id="soundSelect"  >
+              	<option   value="s_Life.mp3" selected="selected">punk</option>
+             	 <option   value="canard-sauvage.mp3" >coin coin</option>
+              </select>
+             
+            </div>
+            <audio  src="tmp.mp3" id="sampler" controls="controls" ></audio>
+          </div>
+         
+          <div class="form-actions">
+            <button id="lancer" type="submit"  class="btn btn-primary">Lancer</button>
+            <button class="btn hide" id="stop"  >Arrêter</button>
+            
+          </div>
+        </fieldset>
+      </form>
+     
+  <div class="modal hide" id="erreurModal">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3>Erreur</h3>
+  </div>
+  <div id="erreurBody" class="modal-body">
+   
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Fermer</a>
+  </div>
+</div>
+  
+    
+  <script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="../js/microTemplates.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+	
+	<script type="text/javascript">
+	var windowName, defaultWidth,defaultheight,defaultfontSize,heightPopup,widthPopup;
+	heightPopup = 311;
+	widthPopup = 355;
+	/*
+	* Action de fermer la popup + de modifier les 
+	*/
+	function closePopup(){
+		if(windowName){
+			windowName.close();
+			windowName = null;
+		}
+
+		buttonsClose();	
+	}
+	
+	/*
+	* Hook pour vérifier que la fenêtre est fermée ou non. 
+	*/
+	function listenerClosePopup(){
+		if(windowName){
+		
+			if(windowName.closed){
+				buttonsClose();
+				windowName = null;
+				return;
+			} 
+			
+			setTimeout(listenerClosePopup,1000);
+		}
+		
+	}
+	
+	function buttonsClose(){
+		$("#stop").css("fontSize",defaultfontSize).css("height",defaultheight).css("width",defaultWidth);
+		
+		
+		$("#stop").hide();
+		$("#lancer").show();
+	}
+	
+	
+	function validateForm(){
+		var chHeure = $("#heure");
+		if(!chHeure.val() || $.trim(chHeure.val()) ==""){
+			$("#erreurBody").html("Veuiller renseigner le champ 'Heure'.");
+			$('#erreurModal').modal('show');
+			return true;
+		}
+		
+		var chMinute = $("#minute");
+		
+		if(!chMinute.val() || $.trim(chMinute.val()) ==""){
+			$("#erreurBody").html("Veuiller renseigner le champ 'Minute'.");
+			$('#erreurModal').modal('show');
+			return true;
+		}
+		
+		return false;
+	}
+	
+	function  changeSound(){
+		var mp3Selected =  $('#soundSelect option:selected').val();
+		var sampler = $("#sampler");
+		 sampler.attr("src","sound/"+mp3Selected);
+		
+		
+		
+	}
+	
+	$(document).ready(function(){
+		var positionY,positionX;
+		// Ne pas permettre de rentrer autre chose que des chiffres
+		$("input[type=text]").bind('keypress', function(e) {   
+		    return (e.which === 8 || e.which === 0 || (e.shiftKey === false && (e.which > 47 && e.which < 58))) ? true : false;   
+		});
+		// sauvegarder les préférences d'affichage.		
+		var boutonArreter = $("#stop");		
+		defaultfontSize = boutonArreter.css("fontSize");
+		defaultheight = boutonArreter.css("height");
+		defaultWidth  = boutonArreter.css("width");		
+		
+		
+		// Action de ARRêter
+		boutonArreter.click(function(){
+			closePopup();
+		});
+		
+		$("#lancer").click(function(){
+			if(validateForm()){
+				return;
+			}
+		
+				// Calcul de la position de la popup	
+				positionY =screen.height -  heightPopup;
+				if(screen.availHeight){
+						positionY =screen.availHeight -  heightPopup;	
+				}			
+				positionX =screen.width -  widthPopup;
+				if(screen.availWidth){
+						positionX =screen.availWidth -  widthPopup;	
+				}	 
+				var url = "popup.html?heure="+$("#heure").val()+"&minute="+$("#minute").val();	
+				var optionsPopup = 'height='+heightPopup+',width='+widthPopup+',screenX='+positionX+',screenY='+positionY+
+					',scrollbars=no,location=no,resizable=no,status=no';	
+				// lancer la popup	
+				windowName=window.open(url,'Timer',optionsPopup); 
+				var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1; 
+				if (is_chrome) {
+					windowName.parent.blur();
+				} 
+				
+				// Gestion des boutons
+				$(this).hide();
+			 	$("#stop").show().animate({ width: "100%" }, 1000 )
+					 .animate({ height: "75px" }, 1000 )
+			    	 .animate({ fontSize: "50px" }, 1000 );
+			 	
+			 	//Mettre un hook pour vérifier la validité de la fenêtre 
+			 	if(windowName){
+					
+					setTimeout(listenerClosePopup,1000);
+		
+					windowName.focus();
+			 	}
+		});
+		
+		
+		// init select audio
+	
+		$.get("sound/data.json", function(data){console.log(data);});
+		/* var jsonSOund = $.parseJSON("sound/data.json");
+		alert(jsonSOund); */
+		
+		$("#soundSelect").change(function(){changeSound();});		
+		changeSound();
+		
+	});
+	
+	
+	</script>
+</body>
+
+</html>
