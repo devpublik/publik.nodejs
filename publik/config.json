@@ -1,5 +1,6 @@
 {
 	"httpPort":3000,
-	"documentFolder":"documents"
+	"documentFolder":"documents",
+	"newsrss":"http://news.google.fr/news?pz=1&cf=all&ned=fr&hl=fr&output=rss"
 
 }

@@ -1,9 +1,19 @@
+/*
+ * actions which can read a ged document
+ * Author: github.com/devpublik / publik.nodejs
+ * Make sure you've read the readme: github.com/devpublik / publik.nodejs/publik
+ * Everything is explained there.
+ */
 var send = require('connect/node_modules/send'),
 fs =  require("fs"),
+util = require("util"),
 config = require("../config"),
 fileUrlRegExp=/\.url/,
 urlBodyRegExp= /.*URL=(.*)\nIDList=/;
 
+/**
+* parse the directory folder.
+*/
 function getDirectoryFiles(directory, callback) {
 	  fs.readdir(directory, function(err, files) {
 		var nbFiles = files.length
@@ -21,7 +31,9 @@ function getDirectoryFiles(directory, callback) {
 	    });
 	  });
 }
-
+/**
+* HTTP response when the application produce a error.
+*/
 function ko(err,res){
 	if(err)
 	console.log(err);
@@ -29,6 +41,9 @@ function ko(err,res){
 	  res.end('KO');	
 }
 
+/**
+* mainfeatures of the rest service.
+*/
 exports.action = function(req,res){
 	
 	var jsonquery = require('url').parse(req.url,true),path,retour = [],documentFolder = config.get("documentFolder");
@@ -46,37 +61,41 @@ exports.action = function(req,res){
 		getDirectoryFiles(path, function(path,isFile,nbFiles,index){
 			
 			fs.stat(path, function(err, substats) {
-				var objectJSON ;
+				var objectJSON, tmppath = path.replace(documentFolder+"/","") ;
+
 				if(substats.isDirectory()){
 				
-			 objectJSON = {
-					"nbFiles":nbFiles,
-					"index":index,
-					"type":"directory",
-					"path":path.replace(documentFolder+"/","")
-					
-			};
+					 objectJSON = {
+							"nbFiles":nbFiles,
+							"index":index,
+							"type":"directory",
+							"path": tmppath, 
+							"dmodif" : substats.mtime.getTime()
+					};
 			
-			} else{
-				if(path.search(fileUrlRegExp) == -1) {
-				 objectJSON = {
-						"nbFiles":nbFiles,
-						"index":index,
-						"type":"file",
-						"path":path.replace(documentFolder+"/","")
-				  }
+				} else{
+					if(path.search(fileUrlRegExp) == -1) {
+					 objectJSON = {
+							"nbFiles":nbFiles,
+							"index":index,
+							"type":"file",
+							"path":tmppath,
+							"dmodif" : substats.mtime.getTime()
+					  }
 				} else {
 					objectJSON = {
 						"nbFiles":nbFiles,
 						"index":index,
 						"type":"url",
-						"path":path.replace(documentFolder+"/","")
+						"path":tmppath,
+						"dmodif" : substats.mtime.getTime()
 				  }
 				}
 
 
 
 			}
+			//console.log(substats)
 			retour.push(objectJSON);	
 			tmp++;	
 				

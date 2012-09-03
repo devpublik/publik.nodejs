@@ -1,4 +1,11 @@
-	var http =  require("http");
+
+/*
+ * actions for consulting online news ...
+ * Author: github.com/devpublik / publik.nodejs
+ * Make sure you've read the readme: github.com/devpublik / publik.nodejs/publik
+ * Everything is explained there.
+ */
+var http =  require("http"),config=require("../config");
 
 
 function StreamBuffer(req) {
@@ -43,18 +50,19 @@ function StreamBuffer(req) {
 	}
 
 
+/**
+* mainfeatures of the rest service.
+*/
 exports.action = function(req,res){
 
-	 http.get("http://news.google.fr/news?pz=1&cf=all&ned=fr&hl=fr&output=rss", function(resultat) {
+	 http.get(config.get("newsrss"), function(resultat) {
 		 var retour = '';
-		// console.log('STATUS: ' + resultat.statusCode);
-		 new StreamBuffer(resultat);
-		 resultat.streambuffer.ondata(function(chunk) {
-		  //console.log('HEADERS: ' + JSON.stringify(res.headers));
+		
+		new StreamBuffer(resultat);
+		resultat.streambuffer.ondata(function(chunk) {
 		 
-			   // console.log('BODY: ' + chunk);
 			    retour += chunk;
-			  });
+		});
 		  
 	
 		 resultat.streambuffer.onend(function() {
@@ -66,5 +74,6 @@ exports.action = function(req,res){
 		  console.log("Got error: " + e.message);
 		  res.statusCode = 400;
 		  res.end('ERROR');
-		});});
+		});
+	});
 };

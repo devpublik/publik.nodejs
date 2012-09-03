@@ -1,15 +1,26 @@
+/*
+ * actions which create new ged document on server
+ * Author: github.com/devpublik / publik.nodejs
+ * Make sure you've read the readme: github.com/devpublik / publik.nodejs/publik
+ * Everything is explained there.
+ */
 var fs =  require("fs"),
 config = require("../config"),
  formidable = require("formidable"),
  sys = require("sys"),
  events = require("events");
 
-
+/**
+* http return request.
+*/
 function ok(req,res){
 	res.statusCode = 200;
 	  res.end('OK');
 }
 
+/**
+* create a link on web site
+*/
 function createUrlFile(req, res,path,adress){
 
 	fs.exists( path,function (exists) {
@@ -25,7 +36,9 @@ function createUrlFile(req, res,path,adress){
 }});
 }
 
-
+/**
+* upload a document.
+*/
 function upload_file(req, res,path) {
 	 if (req.method == 'POST') {
          console.log("[200] " + req.method + " to " + req.url);
@@ -65,6 +78,9 @@ function upload_file(req, res,path) {
        }
 }	
 
+/**
+* mainfeatures of the rest service.
+*/
 exports.action = function(req,res){
 	var jsonquery = require('url').parse(req.url,true),path,documentFolder = config.get("documentFolder");
 	switch (jsonquery.query.type){

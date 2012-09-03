@@ -18,7 +18,8 @@
     <a href="/ged/index.html" class="">RACINE <span class="divider">/</span></a> 
   </li>
   
-</ul></div>
+</ul>
+</div>
 
 
 
@@ -28,8 +29,8 @@
   <div class=" span1 " >   
      <b> Actions : </b>     
   </div >
-  <div class=" span1 " ><button type="button" class="btn" data-toggle="button" data-ged-push="false" onclick="afficherFiltre(this);">Filtrer</button></div>
-<div class=" span1 " ><button type="button" class="btn" data-toggle="button">Trier</button></div>
+  <div class=" span1 " ><button type="button" class="btn" data-toggle="button" data-ged-push="false" onclick="afficherFiltre(this,'.filtrer-element');">Filtrer</button></div>
+<div class=" span1 " ><button type="button" class="btn" data-toggle="button" onclick="afficherFiltre(this,'.sort-element');">Trier</button></div>
 <div class=" span1 " ><button type="button" class="btn" onclick="document.location.reload();">Réinitialiser</button></div>
   <div class="btn-group span4 offset1  " >   
           <a class="btn btn-primary" href="#"><i class="icon-plus icon-white"></i> Ajouter</a>
@@ -57,8 +58,23 @@
      <b> - nom :</b>     
   </div >
    <div class=" span4 filtrer-element hide" > 
-    <input type="text" class="span4 " placeholder="taper le nom ...">
+    <input type="text" id="filterOnName" class="span4 " data-provide="typeahead" data-source="" onkeypress="handleKeyPress(event,this)" placeholder="taper le nom ...">
   </div>
+   <div class=" span1 sort-element hide" style="margin-top:15px;" >   
+     <b> Trier par : </b>     
+  </div >
+  <div class=" span3 sort-element hide" style="margin-top:15px;" >   
+   <select id="sortType"  onchange="sortElmnt();" >
+        <option value="date" selected="selected">Date</option>
+        <option value="name" >Nom</option>
+        <option value="type" >Type</option>
+    </select> 
+   
+  </div >
+   <div id="sortSens" class="btn-group span3  sort-element hide" style="margin-top:15px;"  data-toggle="buttons-radio">
+      <button id="Asc" type="button" class="btn active" onclick ="sortElmnt(this)" >Ascendant</button>
+      <button id="Desc" type="button" class="btn" onclick ="sortElmnt(this)">Descendant</button>
+    </div>
   </div>
 
 
@@ -79,13 +95,20 @@
 	<script type="text/javascript" src="../js/microTemplates.js"></script>
   <script type="text/javascript" src="js/ged.js"></script>
         <script type="text/javascript" >
-            var formUploadFile;
+            var formUploadFile,filtersTypeahead = "[";
             
             ROOT = "index.html?path=";
 
+
+
+          
            
             $(document).ready(function(){
+
+
+
                 var path = $.getUrlVar("path"),oldPath="",anchorRoot=$(".breadcrumb");
+                showLoadModal();
                 if(!path){
                     path = "";
                 }
@@ -104,7 +127,7 @@
                 }
                 
                 
-                }
+                } 
                 anchorRoot.children("li:last").addClass("active");
                 // création de la liste des fichiers
                 $("#pathdir").val(path);
@@ -118,15 +141,30 @@
                   
                    
                    $.each( resultat, function(key){
-                       var tmhref = "/services?action=documents.read&path="+this.path;
+                       var tmhref = "/services?action=documents.read&path="+this.path,filterData;
                        if(this.type=="directory"){
                            tmhref=ROOT+this.path;
                        }
                        
+                       if(filtersTypeahead.length>1)
+                          filtersTypeahead +=",";
+
+
+                       if(this.type =="url"){
+                        filterData = this.path.replace(path+"/", "").replace("/","").replace(".url","");
+                        filtersTypeahead +='"'+filterData+'"';
+                       } else {
+                        filterData =this.path.replace(path+"/", "").replace("/","");
+                        filtersTypeahead += '"'+filterData+'"';
+                       }
                        
                        
-                var tmpHTML = tmpl("template_files",{data:{type:this.type,path:this.path.replace(path+"/", "")},hreaf:tmhref});
-                     $("#currentdirectory").append(tmpHTML);
+                          var tmpHTML = tmpl("template_files",{data:{type:this.type,path:this.path.replace(path+"/", ""), datemdf:this.dmodif},hreaf:tmhref, filter :filterData});
+                      $("#currentdirectory").append(tmpHTML);
+                      $("#filterOnName").attr("data-source",filtersTypeahead+"]");
+
+                       sortElmnt();
+                       hideLoadModal();
                    } );              
                }); 
               
@@ -135,7 +173,12 @@
             });
             
         </script>
-          <div class="modal hide" id="addURLModal">
+        <div class="modal hide" id="loadModal">
+          <div class="modal-header">
+            <h3>Chargmenent en cours ...</h3>
+        </div>
+        </div>
+        <div class="modal hide" id="addURLModal">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">x</button>
             <h3>Ajouter un site internet</h3>
@@ -218,12 +261,12 @@
     </div>      
   <script type="text/html"  id="template_files">
         <%if (data.type != "url"){%>    
-        <tr class=" type-<%=data.type%>" >
+        <tr class="type-<%=data.type%>" data-filter="<%=filter%>" data-date-modif="<%=data.datemdf%>">
         <td class="explorer icone-liste " style="vertical-align: middle;"><img src="img/<%=data.type%>.png"></td>
         <td class="explorer" style="vertical-align: middle;"><a href="<%=hreaf%>" ><%=data.path%></a></td>
         </tr>
         <%} else {%>
-        <tr class=" type-file" >
+        <tr class="type-file" data-filter="<%=filter%>" data-date-modif="<%=data.datemdf%>">
         <td class="explorer icone-liste " style="vertical-align: middle;"><img src="img/<%=data.type%>.png" heigth="50" width="50" ></td>
         <td class="explorer" style="vertical-align: middle;"><a href="<%=hreaf%>" ><%=data.path.replace(".url","")%></a></td>
         </tr>
