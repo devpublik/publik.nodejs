@@ -5,8 +5,20 @@
  * Everything is explained there.
  */
 var connect = require("connect"),  
-config = require("./config");  
-
+config = require("./config"),
+exec = require('child_process').exec,
+child;  
+/**
+ * Launch Redis server.
+ */
+child= exec("launch_redis.bat",
+  function (error, stdout, stderr) {
+    console.log('stdout: ' + stdout);
+    console.log('stderr: ' + stderr);
+    if (error !== null) {
+      console.log('exec error: ' + error);
+    }
+});
 
 
 /**

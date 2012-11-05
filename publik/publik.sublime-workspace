@@ -1,0 +1,295 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"tmp",
+				"tmpDate"
+			],
+			[
+				"el",
+				"el2"
+			],
+			[
+				"pa",
+				"parents  (function)"
+			],
+			[
+				"target",
+				"targetDiv"
+			],
+			[
+				"tage",
+				"targetDiv"
+			],
+			[
+				"mou",
+				"mouseleave"
+			],
+			[
+				"targe",
+				"targetDiv"
+			],
+			[
+				"hi",
+				"hideCtxMenu"
+			],
+			[
+				"targ",
+				"targetDiv"
+			],
+			[
+				"item",
+				"items"
+			],
+			[
+				"in",
+				"inline"
+			],
+			[
+				"ba",
+				"background-image"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"pret",
+				"HTMLPrettify: Prettify"
+			],
+			[
+				"pretty",
+				"HTMLPrettify: Prettify"
+			],
+			[
+				"prett",
+				"HTMLPrettify: Prettify"
+			],
+			[
+				"pre",
+				"HTMLPrettify: Prettify"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"console",
+				"Set Syntax: R Console"
+			],
+			[
+				"in",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"rei",
+				"Indentation: Reindent Lines"
+			]
+		],
+		"width": 536.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/eclipse/publik/publik/html/index.html",
+		"/C/eclipse/publik/publik/html/js/postit.js",
+		"/C/skarb/git/publik.nodejs/publik/publik.sublime-workspace",
+		"/C/eclipse/publik/publik/action/postit.delete.js",
+		"/C/eclipse/publik/publik/html/js/jquery.contextMenu.js",
+		"/C/eclipse/publik/publik/html/js/microTemplates.js",
+		"/C/eclipse/publik/publik/html/css/publik.css",
+		"/C/eclipse/publik/publik/action/postit.create.js",
+		"/C/eclipse/publik/publik/action/postit.read.js",
+		"/C/eclipse/publik/publik/html/js/dateFormat.js",
+		"/C/eclipse/publik/publik/html/js/jwysiwyg/wysiwyg.link.js",
+		"/C/eclipse/publik/publik/html/js/jquery-ui-1.9.1.custom.js",
+		"/C/eclipse/publik/publik/html/js/jwysiwyg/jquery.wysiwyg.js",
+		"/C/eclipse/publik/publik/html/js/jquery.contextMenu.min.js",
+		"/C/eclipse/publik/publik/html/ged/index.html",
+		"/C/eclipse/publik/publik/html/ged/js/ged.js",
+		"/C/eclipse/publik/publik/redis-2.0.2/redis.conf",
+		"/C/eclipse/publik/publik/launch_redis.bat",
+		"/C/eclipse/publik/publik/action/documents.read.js",
+		"/C/eclipse/publik/publik/app.js",
+		"/C/eclipse/publik/publik/node_modules/redis/examples/monitor.js",
+		"/C/eclipse/publik/publik/action/documents.put.js",
+		"/C/eclipse/publik/publik/action/news.js",
+		"/C/eclipse/publik/publik/test_redis.js",
+		"/C/eclipse/publik/publik/redis-2.0.2/appendonly.aof",
+		"/C/eclipse/publik/publik/node_modules/redis/examples/mget.js",
+		"/C/eclipse/publik/publik/node_modules/redis/examples/simple.js",
+		"/C/eclipse/publik/publik/node_modules/redis/examples/subqueries.js",
+		"/C/eclipse/publik/publik/node_modules/redis/examples/eval.js",
+		"/C/eclipse/publik/publik/node_modules/redis/examples/backpressure_drain.js",
+		"/C/eclipse/publik/publik/node_modules/redis/examples/auth.js",
+		"/C/eclipse/publik/publik/node_modules/redis/examples/multi2.js",
+		"/C/eclipse/publik/publik/node_modules/redis/lib/commands.js",
+		"/C/eclipse/publik/publik/node_modules/redis/lib/queue.js",
+		"/C/eclipse/publik/publik/config.js",
+		"/C/eclipse/publik/publik/html/css/jquery.wysiwyg.css",
+		"/C/Donwloads/jwysiwyg-master/jwysiwyg-master/help/examples/01-basic.html",
+		"/C/Donwloads/jwysiwyg-master/jwysiwyg-master/help/examples/02-full.html",
+		"/C/eclipse/publik/publik/html/js/jwysiwyg/default.js",
+		"/C/Donwloads/jwysiwyg-master/jwysiwyg-master/controls/wysiwyg.link.js",
+		"/C/Donwloads/html/html/readme.txt",
+		"/C/eclipse/publik/publik/html/templates.html",
+		"/C/eclipse/publik/publik/html/timer/index.html",
+		"/C/eclipse/publik/publik/html/timer/popup.html",
+		"/C/eclipse/publik/publik/html/css/bootstrap-responsive.css",
+		"/C/eclipse/publik/redis-2.0.2/launch_redis.bat",
+		"/C/eclipse/publik/test.css",
+		"/C/eclipse/publik/redis-2.0.2/appendonly.aof"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"C:\\Donwloads\\jwysiwyg-master,C:\\eclipse\\publik\\publik\\html\\timer",
+			"C:\\Donwloads\\jwysiwyg-master",
+			"C:\\eclipse\\publik\\publik",
+			"C:\\eclipse\\publik\\publikjquery"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"dateFormat",
+			"position(",
+			"				\n",
+			"hset",
+			"contains",
+			"controls",
+			"wysiwyg.link.js",
+			"// ",
+			" ><",
+			"    ",
+			">\n",
+			"jquery-1.7.2.min.js",
+			"jquery",
+			"background-color"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"jquery-1.8.2.min.js"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"index",
+				"html/index.html"
+			],
+			[
+				"po",
+				"action/postit.create.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 212.0,
+	"status_bar_visible": true
+}

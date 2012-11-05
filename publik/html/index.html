@@ -1,27 +1,168 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Accueil</title>
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css">
-<link rel="stylesheet" type="text/css" href="css/publik.css">
-</head>
-<body style=" ">
-<div id="menu" ></div>
-<div class="hero-unit span8" style="display: inline; ;" >
-  <h1>Outils</h1>
-  
-  <p>
-    <a href="" class="btn btn-primary btn-large">
-      Learn more
-    </a>
-  </p>
-</div>
-<div class="span12" style="height: 120px;background-image:  url('http://profil.action-sociale.org/bannieres/183.jpg')  ;" ></div>
-<!-- <div class="span10" style="background-color: red" >&nbsp;</div> -->
- <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/microTemplates.js"></script>
-</body>
+    
+    <head>
+        <meta charset="ISO-8859-1">
+        <title>
+            Accueil
+        </title>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css">
+        <link rel="stylesheet" type="text/css" href="css/publik.css">
+        <link rel="stylesheet" href="css/jquery.wysiwyg.css" type="text/css" media="screen"
+        charset="utf-8" />
+    </head>
+    
+    <body style=" ">
+        <div id="menu">
+        </div>
+        <div id="container-postit" class="hero-unit span10 droppable" style="display: inline; heigth:100%;">
+            
+           <!--  <div class="postit-publik draggable">
+                <div class="postit-header-publik">
+                    <span class="label label-warning">
+                        CECi est un test2
+                    </span>
+                </div>
+                <div class="postit-content-publik">
+                    CECi est un testss
+                </div>
+            </div> -->
+        </div>
+        <div id="buttons-pad" style="">
+            <a class="btn btn-danger" type="button" data-toggle="modal" data-target="#create-postit"><i class="icon-plus icon-white"></i> Post-It</a>
+        </div>
+
+        <!-- context menu -->
+        <div id="context-menu-postit"  class="span2 bs-docs-sidebar hide context-menu-publik" >
+            <ul class="nav nav-list bs-docs-sidenav  bg-publik " >
+                <li class="nav-header">Post-It</li>
+                <li class="lienMenuPrincipal"><a href="#" onclick="deletePostIt();" class=""><i class="icon-remove"></i>Supprimer</a></li>
+            </ul>
+        </div>
+       
+
+        <!-- modal windows -->
+        <div id="create-postit" class="modal hide fade">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h3>
+                    Création d'un nouveau Post-It
+                </h3>
+            </div>
+            <div class="modal-body">
+                <form id="form-create-postit" class="form-horizontal">
+                    <fieldset>
+                        <div id="1_control_group" class="control-group">
+                            <label class="control-label" for="title">
+                                Titre :
+                            </label>
+                            <div class="controls">
+                                <input type="text" class="input-xlarge" id="title">
+                            </div>
+                        </div>
+                        <div id="2_control_group" class="control-group">
+                            <label class="control-label">
+                                Style du titre :
+                            </label>
+                            <div class="controls">
+                                <div class="btn-toolbar ">
+                                    <div id="type-title" class="btn-group" data-toggle="buttons-radio">
+                                        <button class="btn active type-postit" data-type-title-value="label label-important">
+                                            <i class="icon-minus-sign">
+                                            </i>
+                                        </button>
+                                        <button class="btn type-postit"  data-type-title-value="label label-warning"> 
+                                            <i class="icon-warning-sign">
+                                            </i>
+                                        </button>
+                                        <button class="btn type-postit"  data-type-title-value="label label-info">
+                                            <i class="icon-info-sign">
+                                            </i>
+                                        </button>
+                                        <button class="btn type-postit"  data-type-title-value="label label-success">
+                                            <i class="icon-ok-circle">
+                                            </i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="3_control_group" class="control-group">
+                            <label class="control-label">
+                                Contenue :
+                            </label>
+                            <div class="controls">
+                                <textarea id="wysiwyg" rows="5" cols="40" >
+                                </textarea>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div id="preview-create-postit" class="hide" style="text-align:center;">
+                <div class="postit-publik ">
+                    <div class="postit-header-publik">
+                        <span id="preview-title" class="label label-success">
+                        </span>
+                    </div>
+                    <div id="preview-contains" class="postit-content-publik">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn" onclick="$('#create-postit').modal('hide');">Fermer</a>
+                <a href="#" class="btn " data-toggle="button" onclick="changePreviewCreation();">Prévisalisation</a>
+                <a href="#" class="btn btn-primary" onclick="createPostIt();">Créer</a>
+            </div>
+        </div>
+        </div>
+
+
+        <script type="text/javascript" src="js/jquery-1.8.2.min.js">
+                        
+        </script>
+        <script type="text/javascript" src="js/bootstrap.min.js">
+                        
+        </script>
+        <script type="text/javascript" src="js/jquery-ui-1.9.1.custom.min.js">
+                        
+        </script>
+        <script type="text/javascript" src="js/microTemplates.js">
+        </script>
+        <script type="text/javascript" src="js/dateFormat.js">
+        </script>
+        <script type="text/javascript" src="js/jwysiwyg/jquery.wysiwyg.js">
+                        
+        </script>
+       
+        <script type="text/javascript" src="js/jwysiwyg/wysiwyg.image.js">
+        </script>
+    
+        <script type="text/javascript" src="js/jwysiwyg/wysiwyg.table.js">
+        </script>
+
+    
+    
+        
+        <script type="text/javascript" src="js/postit.js">
+        </script>
+
+        <!-- Template Html-->
+        <script type="text/html"  id="template_postit">
+            <div data-id-postit="<%=data.id%>" class="postit-publik draggable context-menu-postit">
+                <div class="postit-header-publik">
+                    <a class="tooltip-date <%=data.type%>" rel="tooltip" data-placement="top" data-original-title="date de création <%=data.date%>">
+                        <%=data.title%>
+                    </a>
+                </div>
+                <div class="postit-content-publik">
+                    <%=data.contains%>
+                </div>
+            </div>
+        </script>
+    </body>
+
 </html>
