@@ -1,3 +1,6 @@
+
+define(["lib/ui/richeditor/jquery.wysiwyg"] , function(){
+
 /**
  * Controls: Image plugin
  *
@@ -283,3 +286,5 @@
 		});
 	};
 })(jQuery);
+
+});

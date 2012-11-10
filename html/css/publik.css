@@ -29,6 +29,7 @@
     width: 232px;
     height: 230px;
     display: inline-block;
+   /* z-index: 8000;*/
 }
 
 .postit-header-publik {

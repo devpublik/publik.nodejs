@@ -17,17 +17,6 @@
         <div id="menu">
         </div>
         <div id="container-postit" class="hero-unit span10 droppable" style="display: inline; heigth:100%;">
-            
-           <!--  <div class="postit-publik draggable">
-                <div class="postit-header-publik">
-                    <span class="label label-warning">
-                        CECi est un test2
-                    </span>
-                </div>
-                <div class="postit-content-publik">
-                    CECi est un testss
-                </div>
-            </div> -->
         </div>
         <div id="buttons-pad" style="">
             <a class="btn btn-danger" type="button" data-toggle="modal" data-target="#create-postit"><i class="icon-plus icon-white"></i> Post-It</a>
@@ -37,7 +26,7 @@
         <div id="context-menu-postit"  class="span2 bs-docs-sidebar hide context-menu-publik" >
             <ul class="nav nav-list bs-docs-sidenav  bg-publik " >
                 <li class="nav-header">Post-It</li>
-                <li class="lienMenuPrincipal"><a href="#" onclick="deletePostIt();" class=""><i class="icon-remove"></i>Supprimer</a></li>
+                <li class="lienMenuPrincipal"><a href="#" onclick="POSTIT.deletePostIt();" class=""><i class="icon-remove"></i>Supprimer</a></li>
             </ul>
         </div>
        
@@ -114,55 +103,28 @@
             </div>
             <div class="modal-footer">
                 <a href="#" class="btn" onclick="$('#create-postit').modal('hide');">Fermer</a>
-                <a href="#" class="btn " data-toggle="button" onclick="changePreviewCreation();">Prévisalisation</a>
-                <a href="#" class="btn btn-primary" onclick="createPostIt();">Créer</a>
+                <a href="#" class="btn " data-toggle="button" onclick="POSTIT.changePreviewCreation();">Prévisalisation</a>
+                <a href="#" class="btn btn-primary" onclick="POSTIT.createPostIt();">Créer</a>
             </div>
         </div>
         </div>
-
-
-        <script type="text/javascript" src="js/jquery-1.8.2.min.js">
-                        
-        </script>
-        <script type="text/javascript" src="js/bootstrap.min.js">
-                        
-        </script>
-        <script type="text/javascript" src="js/jquery-ui-1.9.1.custom.min.js">
-                        
-        </script>
-        <script type="text/javascript" src="js/microTemplates.js">
-        </script>
-        <script type="text/javascript" src="js/dateFormat.js">
-        </script>
-        <script type="text/javascript" src="js/jwysiwyg/jquery.wysiwyg.js">
-                        
-        </script>
-       
-        <script type="text/javascript" src="js/jwysiwyg/wysiwyg.image.js">
-        </script>
-    
-        <script type="text/javascript" src="js/jwysiwyg/wysiwyg.table.js">
-        </script>
-
-    
-    
-        
-        <script type="text/javascript" src="js/postit.js">
-        </script>
-
-        <!-- Template Html-->
-        <script type="text/html"  id="template_postit">
-            <div data-id-postit="<%=data.id%>" class="postit-publik draggable context-menu-postit">
-                <div class="postit-header-publik">
-                    <a class="tooltip-date <%=data.type%>" rel="tooltip" data-placement="top" data-original-title="date de création <%=data.date%>">
-                        <%=data.title%>
-                    </a>
-                </div>
-                <div class="postit-content-publik">
-                    <%=data.contains%>
-                </div>
-            </div>
-        </script>
+        <script src="js/config.curl.js" type="text/javascript"  ></script>
+        <script src="js/curl.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            var POSTIT;
+            curl( // fetch all of these resources ("dependencies")
+                [
+                    "apps/news","apps/postit"
+                ]
+            )
+            // when they are loaded
+            .then(function(News,Postit){
+                console.log("init News");
+                News.init();
+                POSTIT = Postit;
+                Postit.init();
+            });
+         </script>
     </body>
 
 </html>

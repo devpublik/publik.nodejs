@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"__",
+				"____UTILS"
+			],
+			[
 				"tmp",
 				"tmpDate"
 			],
@@ -59,19 +63,19 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 392.0,
+		"height": 58.0,
 		"selected_items":
 		[
 			[
-				"install",
-				"Package Control: Install Package"
-			],
-			[
-				"pret",
+				"prettify",
 				"HTMLPrettify: Prettify"
 			],
 			[
 				"pretty",
+				"HTMLPrettify: Prettify"
+			],
+			[
+				"pretti",
 				"HTMLPrettify: Prettify"
 			],
 			[
@@ -80,6 +84,30 @@
 			],
 			[
 				"pre",
+				"HTMLPrettify: Prettify"
+			],
+			[
+				"prettif",
+				"HTMLPrettify: Prettify"
+			],
+			[
+				"p",
+				"HTMLPrettify: Prettify"
+			],
+			[
+				"rett",
+				"HTMLPrettify: Prettify"
+			],
+			[
+				"preti",
+				"HTMLPrettify: Prettify"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"pret",
 				"HTMLPrettify: Prettify"
 			],
 			[
@@ -103,7 +131,7 @@
 				"Indentation: Reindent Lines"
 			]
 		],
-		"width": 536.0
+		"width": 411.0
 	},
 	"console":
 	{
@@ -120,9 +148,74 @@
 	},
 	"file_history":
 	[
-		"/C/skarb/git/publik.nodejs/publik/Readme.md",
+		"/C/skarb/git/publik.nodejs/html/js/lib/ui/countdown.js",
+		"/C/skarb/git/publik.nodejs/html/timer/popup.html",
+		"/C/skarb/git/publik.nodejs/html/js/lib/common/utils.js",
+		"/C/skarb/git/publik.nodejs/html/js/lib/ui/richeditor/wysiwyg.table.js",
+		"/C/skarb/git/publik.nodejs/html/js/jquery.sparkline.min.js",
+		"/C/skarb/git/publik.nodejs/html/js/apps/popup.js",
+		"/C/skarb/git/publik.nodejs/html/js/lib/ui/jquery-ui-1.9.1.custom.min.js",
+		"/C/skarb/git/publik.nodejs/html/js/apps/timer.js",
+		"/C/skarb/git/publik.nodejs/html/js/apps/postit.js",
+		"/C/skarb/git/publik.nodejs/html/index.html",
+		"/C/skarb/git/publik.nodejs/html/js/lib/common/jquerysort.js",
+		"/C/skarb/git/publik.nodejs/html/js/config.curl.js",
+		"/C/skarb/git/publik.nodejs/html/js/config.sub.curl.js",
+		"/C/skarb/git/publik.nodejs/html/timer/index.html",
+		"/C/skarb/git/publik.nodejs/html/templates/news/user_tmpl.html",
+		"/C/skarb/git/publik.nodejs/html/templates/menu.html",
+		"/C/skarb/git/publik.nodejs/html/templates.html",
+		"/C/skarb/git/publik.nodejs/html/templates/postit/postit.html",
+		"/C/skarb/git/publik.nodejs/html/js/apps/news.js",
+		"/C/skarb/git/publik.nodejs/html/css/publik.css",
+		"/C/skarb/git/publik.nodejs/html/templates/news.html",
+		"/C/Donwloads/curl-master/curl-master/test/domReady.html",
+		"/C/Donwloads/curl-master/curl-master/test/defineContext.html",
+		"/C/Donwloads/curl-master/curl-master/test/stuff/one.js",
+		"/C/Donwloads/curl-master/curl-master/test/stuff/two.js",
+		"/C/Donwloads/curl-master/curl-master/test/stuff/foo.defineModule.js",
+		"/C/skarb/git/publik.nodejs/html/main.js",
+		"/C/skarb/git/publik.nodejs/html/js/lib/ui/default.js",
+		"/C/Donwloads/curl-master/curl-master/bin/make.sh",
+		"/C/Donwloads/curl-master/curl-master/bin/compile.sh",
+		"/C/Donwloads/curl-master/curl-master/bin/make-all.sh",
+		"/C/skarb/git/publik.nodejs/html/js/curl/domReady.js",
+		"/C/skarb/git/publik.nodejs/html/js/curl/debug.js",
+		"/C/skarb/git/publik.nodejs/html/js/apps/main.js",
+		"/C/skarb/git/publik.nodejs/html/js/config.js",
+		"/C/Donwloads/curl-master/curl-master/dist/curl-with-js-and-domReady/curl.js",
+		"/C/Donwloads/curl-master/curl-master/dist/curl-for-jQuery/curl.js",
+		"/C/skarb/git/publik.nodejs/html/js/lib/ui/richeditor/wysiwyg.image.js",
+		"/C/skarb/git/publik.nodejs/html/js/lib/ui/jquery-ui-1.9.1.custom.js",
+		"/C/skarb/git/publik.nodejs/html/js/lib/ui/richeditor/default.js",
+		"/C/skarb/git/publik.nodejs/html/js/default.js",
+		"/C/skarb/git/publik.nodejs/html/js/main.js",
+		"/C/skarb/git/publik.nodejs/html/js/require-jquery.js",
+		"/C/skarb/git/publik.nodejs/html/js/lib/common/default.js",
+		"/C/skarb/git/publik.nodejs/html/js/common/default.js",
+		"/C/skarb/git/publik.nodejs/html/js/postit.js",
+		"/C/skarb/git/publik.nodejs/html/js/utils.js",
+		"/C/skarb/git/publik.nodejs/html/js/news.js",
+		"/C/Donwloads/jquery-require-sample/jquery-require-sample/webapp/scripts/require-jquery.js",
+		"/C/skarb/git/publik.nodejs/html/js/lib/common/bootstrap.min.js",
+		"/C/skarb/git/publik.nodejs/html/js/common/jquery-1.8.2.min.js",
+		"/C/skarb/git/publik.nodejs/html/js/ui/default.js",
+		"/C/skarb/git/publik.nodejs/html/js/ui/countdown.js",
+		"/C/skarb/git/publik.nodejs/html/js/ui/richeditor/default.js",
+		"/C/skarb/git/publik.nodejs/html/js/common/bootstrap.min.js",
+		"/C/Donwloads/jquery-require-sample/jquery-require-sample/webapp/scripts/main.js",
+		"/C/Donwloads/jquery-require-sample/jquery-require-sample/webapp/scripts/jquery.alpha.js",
+		"/C/Donwloads/jquery-require-sample/jquery-require-sample/webapp/scripts/jquery.beta.js",
+		"/C/skarb/git/publik.nodejs/html/js/common/microTemplates.js",
+		"/C/skarb/git/publik.nodejs/html/js/common/urlParam.js",
+		"/C/skarb/git/publik.nodejs/html/js/richeditor/default.js",
+		"/C/skarb/git/publik.nodejs/html/js/microTemplates.js",
 		"/C/eclipse/publik/publik/html/index.html",
+		"/C/Donwloads/jquery-require-sample/jquery-require-sample/webapp/app.html",
 		"/C/eclipse/publik/publik/html/js/postit.js",
+		"/C/skarb/git/publik.nodejs/launch_redis.bat",
+		"/C/skarb/git/publik.nodejs/html/js/urlParam.js",
+		"/C/skarb/git/publik.nodejs/publik/Readme.md",
 		"/C/skarb/git/publik.nodejs/publik/publik.sublime-workspace",
 		"/C/eclipse/publik/publik/action/postit.delete.js",
 		"/C/eclipse/publik/publik/html/js/jquery.contextMenu.js",
@@ -172,13 +265,15 @@
 	],
 	"find":
 	{
-		"height": 34.0
+		"height": 39.0
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 90.0,
 		"where_history":
 		[
+			"C:\\skarb\\git\\publik.nodejs",
+			"C:\\eclipse\\publik\\publik\\html\\",
 			"C:\\Donwloads\\jwysiwyg-master,C:\\eclipse\\publik\\publik\\html\\timer",
 			"C:\\Donwloads\\jwysiwyg-master",
 			"C:\\eclipse\\publik\\publik",
@@ -190,6 +285,34 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"updatePieCharte",
+			"theDiffStringCountdown",
+			"\n",
+			"timer",
+			"user_tmpl",
+			" \n",
+			"            ",
+			"menuTemplate",
+			"user_tmpl",
+			"domReady",
+			"hideCtxMenu",
+			"../ui/richeditor",
+			"\"],",
+			"define",
+			"',\n",
+			"$",
+			"});\n",
+			"\",\"",
+			"wysiwyg",
+			"tooltip",
+			"jquery.contextMenu",
+			"jwysiwyg/",
+			"dateformat",
+			".js",
+			"\n",
+			"js/",
+			"\n   ",
+			"js",
 			"dateFormat",
 			"position(",
 			"				\n",
@@ -211,6 +334,9 @@
 		"regex": false,
 		"replace_history":
 		[
+			"",
+			"re",
+			"",
 			"jquery-1.8.2.min.js"
 		],
 		"reverse": false,
@@ -260,7 +386,7 @@
 	"menu_visible": true,
 	"replace":
 	{
-		"height": 0.0
+		"height": 62.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -268,6 +394,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"inde",
+				"html/index.html"
+			],
 			[
 				"index",
 				"html/index.html"
@@ -291,6 +421,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 212.0,
+	"side_bar_width": 315.0,
 	"status_bar_visible": true
 }
