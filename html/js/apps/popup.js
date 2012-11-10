@@ -1,4 +1,4 @@
-define(["lib/common/utils","ui/countdown","jquery.sparkline.min","domReady!"], function(Utils,Countdown) {
+define(["lib/common/utils","ui/countdown","js!jquery.sparkline.min.js!order","domReady!"], function(Utils,Countdown) {
 
     var heure = 0,
         minute = 1,
