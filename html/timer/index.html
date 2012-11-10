@@ -1,82 +1,100 @@
 <html>
-
-<head>
-<meta charset="UTF-8">
-<title>Timer</title>
-	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../css/bootstrap-responsive.min.css">
-	<link rel="stylesheet" type="text/css" href="css/timer.css">
-	<link rel="stylesheet" type="text/css" href="../css/publik.css">
-</head>
-<body >
-<div id="menu" ></div>
-
-      <form class="form-horizontal " action="#" >
-        <fieldset>
-          <div class="control-group" style="vertical-align: top;">
-            <label class="control-label" for="heure">Heure : </label>
-            <div class="controls">
-              <input type="text" class="input-mini heigthInputs"  id="heure" maxlength="2" value="00">
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="minute">Minute : </label>
-            <div class="controls">
-              <input type="text" class="input-mini heigthInputs"  id="minute" maxlength="2" value="30">
-              <p class="help-block">Merci de préciser le temps de l'exercice (HH24:MI).</p>
-            </div>
-          </div>
-           <div class="control-group" style="vertical-align:bottom; ;" >
-            <label class="control-label" for="soundSelect">Sonnerie : </label>
-            <div class="controls">
-              <select id="soundSelect"  >
-              	<option   value="s_Life.mp3" selected="selected">punk</option>
-             	 <option   value="canard-sauvage.mp3" >coin coin</option>
-              </select>
-             
-            </div>
-            <audio  src="tmp.mp3" id="sampler" controls="controls" ></audio>
-          </div>
-         
-          <div class="form-actions">
-            <button id="lancer" type="submit"  class="btn btn-primary">Lancer</button>
-            <button class="btn hide" id="stop"  >Arrêter</button>
-            
-          </div>
-        </fieldset>
-      </form>
-     
-  <div class="modal hide" id="erreurModal">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal">×</button>
-    <h3>Erreur</h3>
-  </div>
-  <div id="erreurBody" class="modal-body">
-   
-  </div>
-  <div class="modal-footer">
-    <a href="#" class="btn" data-dismiss="modal">Fermer</a>
-  </div>
-</div>
-   <script src="../js/config.sub.curl.js" type="text/javascript"  ></script>
-   <script src="../js/curl.js" type="text/javascript"></script>
     
-	
-	<script type="text/javascript">
-	curl( // fetch all of these resources ("dependencies")
-                [
-                    "apps/news","apps/timer"
-                ]
-            )
-            // when they are loaded
-            .then(function(News,Timer){
-                console.log("init News");
-                News.init();
-               Timer.init();
-            });
-	
-	
-	</script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            Timer
+        </title>
+        <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/bootstrap-responsive.min.css">
+        <link rel="stylesheet" type="text/css" href="css/timer.css">
+        <link rel="stylesheet" type="text/css" href="../css/publik.css">
+    </head>
+    
+    <body>
+        <div id="menu">
+        </div>
+        <form class="form-horizontal " action="#">
+            <fieldset>
+                <div class="control-group" style="vertical-align: top;">
+                    <label class="control-label" for="heure">
+                        Heure :
+                    </label>
+                    <div class="controls">
+                        <input type="number" class="input-mini heigthInputs" id="heure" maxlength="2"
+                        value="00">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="minute">
+                        Minute :
+                    </label>
+                    <div class="controls">
+                        <input type="number" class="input-mini heigthInputs" id="minute" maxlength="2"
+                        value="30">
+                        <p class="help-block">
+                            Merci de préciser le temps de l'exercice (HH24:MI).
+                        </p>
+                    </div>
+                </div>
+                <div class="control-group" style="vertical-align:bottom; ;">
+                    <label class="control-label" for="soundSelect">
+                        Sonnerie :
+                    </label>
+                    <div class="controls">
+                        <select id="soundSelect">
+                            <option value="s_Life.mp3" selected="selected">
+                                punk
+                            </option>
+                            <option value="canard-sauvage.mp3">
+                                coin coin
+                            </option>
+                        </select>
+                    </div>
+                    <audio src="tmp.mp3" id="sampler" controls="controls">
+                    </audio>
+                </div>
+                <div class="form-actions">
+                    <button id="launch" type="submit" class="btn btn-primary" onclick="TIMER.launchPopup();">
+                        Lancer
+                    </button>
+                    <button class="btn hide" id="stop" onclick="TIMER.closePopup();">
+                        Arrêter
+                    </button>
+                </div>
+            </fieldset>
+        </form>
+        <div class="modal hide" id="erreurModal">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    ×
+                </button>
+                <h3>
+                    Erreur
+                </h3>
+            </div>
+            <div id="erreurBody" class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn" data-dismiss="modal">Fermer</a>
+            </div>
+        </div>
+        <script src="../js/config.sub.curl.js" type="text/javascript">
+        </script>
+        <script src="../js/curl.js" type="text/javascript">
+        </script>
+        <script type="text/javascript">
+        var TIMER;
+          curl( // fetch all of these resources ("dependencies")
+           ["apps/news", "apps/timer"])
+          // when they are loaded
+          .then(function(News, Timer) {
+              console.log("init News");
+              News.init();
+              TIMER = Timer;
+              Timer.init();
+          });
+        </script>
+    </body>
 
 </html>

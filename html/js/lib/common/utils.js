@@ -2,7 +2,7 @@
 var ____UTILS;
 
 
-define(['js!common/jquery-1.8.2.min.js', 'js!common/bootstrap.min.js', "js!common/jquerysort.js"], function() {
+define(['js!common/jquery-1.8.2.min.js!order', 'js!common/bootstrap.min.js!order', "js!common/jquerysort.js!order",,"js!jquery.sparkline.min.js!order"], function() {
     var cache = {};
     // test if singletin is created
     if (!____UTILS) {
@@ -15,7 +15,7 @@ define(['js!common/jquery-1.8.2.min.js', 'js!common/bootstrap.min.js', "js!commo
             tmpl: function(str, data) {
                 // Figure out if we're getting a template, or if we need to
                 // load the template - and be sure to cache the result.
-                var fn = !/\W/.test(str) ? cache[str] = cache[str] || tmpl(document.getElementById(str).innerHTML) :
+                var fn = !/\W/.test(str) ? cache[str] = cache[str] || this.tmpl(document.getElementById(str).innerHTML) :
 
                 // Generate a reusable function that will serve as a template
                 // generator (and which will be cached).
