@@ -1,8 +1,14 @@
 
-
-define(["common/utils"], function(Utils) {
+/**
+* module to manage GED.
+**/
+define(["common/utils","text!templates/ged/anchor.html","text!templates/ged/template_subdir.html","text!templates/ged/template_files.html"], 
+    function(Utils,AnchorTemplate,SubdirTemplate,FilesTemplate) {
+        
     var sens;
-
+    /**
+    * private functions.
+    **/
     var showLoadModal = function() {
             $("#loadModal").modal();
         },
@@ -73,9 +79,17 @@ define(["common/utils"], function(Utils) {
             var valueSelected = $("#filterOnName").val();
             return valueSelected == "" || valueSelected == objet.attr("data-filter")
         };
-
+    /**
+    * Objet to manage.
+    **/
     return {
+        /**
+        * common directory.
+        **/
         ROOT: "/",
+        /**
+        * To up in the hierarchy directory.
+        **/
         toUp: function() {
             var actualPath = $("#pathdir").val(),
                 li;
@@ -87,6 +101,9 @@ define(["common/utils"], function(Utils) {
 
             } else document.location = ROOT + actualPath.substring(0, li);
         },
+        /**
+        * call the create directory method.
+        **/
         createDir: function() {
             var newdir = $("#dirName").val(),
                 pathAbsolute;
@@ -112,14 +129,23 @@ define(["common/utils"], function(Utils) {
             }
             return false;
         },
+        /**
+        * open the create directory dialog box.
+        **/
         openCreateDir: function() {
             $("#dirName_control_group").removeClass("error");
             $("#addDirectoryModal").modal();
             return false;
         },
+         /**
+        * upload the file and refresh the page.
+        **/
         dropUploadFile: function(evt) {
             innerdropUploadFile(evt);
         },
+         /**
+        * open the upload dialog box.
+        **/
         openUploadFile: function() {
             if (window.FormData) {
                 formUploadFile = new FormData();
@@ -130,6 +156,9 @@ define(["common/utils"], function(Utils) {
             $("#addFileModal").modal();
             return false;
         },
+        /**
+        * add a new url in ged document.
+        **/
         addURL: function() {
             var name = $("#urlName").val(),
                 adress = $("#adress").val();
@@ -159,11 +188,17 @@ define(["common/utils"], function(Utils) {
 
             return false;
         },
+        /**
+        * open the add url dialog box.
+        **/
         openAddURL: function() {
             $("#urlName_control_group").removeClass("error");
             $("#adress_control_group").removeClass("error");
             $("#addURLModal").modal();
         },
+        /**
+        * show/hide the zone filters.
+        **/
         afficherFiltre: function(o, selector) {
             var elt = $(o);
             var show = elt.attr("data-ged-push") != "true";
@@ -171,7 +206,9 @@ define(["common/utils"], function(Utils) {
             else $(selector).hide();
             elt.attr("data-ged-push", show);
         },
-
+        /**
+        *  filters the list of files.
+        **/
         filtrer: function() {
             $("#currentdirectory").children().each(function() {
                 var objet = $(this);
@@ -192,7 +229,9 @@ define(["common/utils"], function(Utils) {
         sortElmnt: function(but) {
             innerSorts(but);
         },
-
+        /**
+        * initialize the page.
+        **/
         init: function() {
             var formUploadFile, filtersTypeahead = "[";
 
@@ -217,7 +256,7 @@ define(["common/utils"], function(Utils) {
                     }
                     oldPath = oldPath + currentTagTokens[i];
 
-                    anchorRoot.append(Utils.tmpl("template_breakdown", {
+                        anchorRoot.append(Utils.tmpl(AnchorTemplate, {
                         "urlA": oldPath,
                         "urlB": currentTagTokens[i]
                     }));
@@ -230,14 +269,14 @@ define(["common/utils"], function(Utils) {
             $("#pathdir").val(path);
             $("#currentdirectory").empty();
             if (path != "") {
-                $("#currentdirectory").append(Utils.tmpl("template_subdir", "{\"d\":\"s\"}"));
+                $("#currentdirectory").append(Utils.tmpl(SubdirTemplate, "{\"d\":\"s\"}"));
             }
 
             $.getJSON("/services", {
                 action: "documents.read",
                 "path": path
             }, function(resultat) {
-                console.log(resultat);
+              //  console.log(resultat);
 
 
                 $.each(resultat, function(key) {
@@ -259,7 +298,7 @@ define(["common/utils"], function(Utils) {
                     }
 
 
-                    var tmpHTML = Utils.tmpl("template_files", {
+                    var tmpHTML = Utils.tmpl(FilesTemplate, {
                         data: {
                             type: this.type,
                             path: this.path.replace(path + "/", ""),

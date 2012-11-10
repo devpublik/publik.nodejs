@@ -1,0 +1,12 @@
+<%if (data.type != "url"){%>    
+    <tr class="type-<%=data.type%>" data-filter="<%=filter%>" data-date-modif="<%=data.datemdf%>">
+        <td class="explorer icone-liste " style="vertical-align: middle;"><img src="img/<%=data.type%>.png"></td>
+        <td class="explorer" style="vertical-align: middle;"><a href="<%=hreaf%>" ><%=data.path%></a></td>
+    </tr>
+<%} else {%>
+    <tr class="type-file" data-filter="<%=filter%>" data-date-modif="<%=data.datemdf%>">
+        <td class="explorer icone-liste " style="vertical-align: middle;"><img src="img/<%=data.type%>.png" heigth="50" width="50" ></td>
+        <td class="explorer" style="vertical-align: middle;"><a href="<%=hreaf%>" ><%=data.path.replace(".url","")%></a></td>
+    </tr>
+<%}%>
+   <!--  </tr> -->

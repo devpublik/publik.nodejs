@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"fun",
+				"function"
+			],
+			[
 				"__",
 				"____UTILS"
 			],
@@ -63,15 +67,11 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 58.0,
+		"height": 288.0,
 		"selected_items":
 		[
 			[
-				"prettify",
-				"HTMLPrettify: Prettify"
-			],
-			[
-				"pretty",
+				"preti",
 				"HTMLPrettify: Prettify"
 			],
 			[
@@ -83,7 +83,23 @@
 				"HTMLPrettify: Prettify"
 			],
 			[
+				"rettify",
+				"HTMLPrettify: Prettify"
+			],
+			[
+				"rett",
+				"HTMLPrettify: Prettify"
+			],
+			[
 				"pre",
+				"HTMLPrettify: Prettify"
+			],
+			[
+				"prettify",
+				"HTMLPrettify: Prettify"
+			],
+			[
+				"pretty",
 				"HTMLPrettify: Prettify"
 			],
 			[
@@ -92,14 +108,6 @@
 			],
 			[
 				"p",
-				"HTMLPrettify: Prettify"
-			],
-			[
-				"rett",
-				"HTMLPrettify: Prettify"
-			],
-			[
-				"preti",
 				"HTMLPrettify: Prettify"
 			],
 			[
@@ -131,7 +139,7 @@
 				"Indentation: Reindent Lines"
 			]
 		],
-		"width": 411.0
+		"width": 536.0
 	},
 	"console":
 	{
@@ -148,25 +156,32 @@
 	},
 	"file_history":
 	[
+		"/C/skarb/git/publik.nodejs/html/ged/index.html",
+		"/C/skarb/git/publik.nodejs/html/js/apps/ged.js",
+		"/C/skarb/git/publik.nodejs/html/js/apps/postit.js",
+		"/C/skarb/git/publik.nodejs/html/js/config.sub.curl.js",
+		"/C/skarb/git/publik.nodejs/html/templates/ged/template_files.html",
+		"/C/skarb/git/publik.nodejs/html/templates/ged/anchor.html",
+		"/C/skarb/git/publik.nodejs/html/templates/ged/template_subdir.html",
+		"/C/skarb/git/publik.nodejs/html/timer/index.html",
+		"/C/Users/skarb/IdeaProjects/untitled/src/main/scala/helloworld/Helloworld.scala",
+		"/C/Users/skarb/IdeaProjects/untitled1/src/helloworld/Helloworld.scala",
+		"/C/skarb/git/publik.nodejs/html/js/lib/common/utils.js",
+		"/C/skarb/git/publik.nodejs/html/js/apps/timer.js",
+		"/C/skarb/git/publik.nodejs/html/js/apps/popup.js",
+		"/C/skarb/git/publik.nodejs/html/js/apps/news.js",
+		"/C/skarb/git/publik.nodejs/html/js/jquery.sparkline.min.js",
 		"/C/skarb/git/publik.nodejs/html/js/lib/ui/countdown.js",
 		"/C/skarb/git/publik.nodejs/html/timer/popup.html",
-		"/C/skarb/git/publik.nodejs/html/js/lib/common/utils.js",
 		"/C/skarb/git/publik.nodejs/html/js/lib/ui/richeditor/wysiwyg.table.js",
-		"/C/skarb/git/publik.nodejs/html/js/jquery.sparkline.min.js",
-		"/C/skarb/git/publik.nodejs/html/js/apps/popup.js",
 		"/C/skarb/git/publik.nodejs/html/js/lib/ui/jquery-ui-1.9.1.custom.min.js",
-		"/C/skarb/git/publik.nodejs/html/js/apps/timer.js",
-		"/C/skarb/git/publik.nodejs/html/js/apps/postit.js",
 		"/C/skarb/git/publik.nodejs/html/index.html",
 		"/C/skarb/git/publik.nodejs/html/js/lib/common/jquerysort.js",
 		"/C/skarb/git/publik.nodejs/html/js/config.curl.js",
-		"/C/skarb/git/publik.nodejs/html/js/config.sub.curl.js",
-		"/C/skarb/git/publik.nodejs/html/timer/index.html",
 		"/C/skarb/git/publik.nodejs/html/templates/news/user_tmpl.html",
 		"/C/skarb/git/publik.nodejs/html/templates/menu.html",
 		"/C/skarb/git/publik.nodejs/html/templates.html",
 		"/C/skarb/git/publik.nodejs/html/templates/postit/postit.html",
-		"/C/skarb/git/publik.nodejs/html/js/apps/news.js",
 		"/C/skarb/git/publik.nodejs/html/css/publik.css",
 		"/C/skarb/git/publik.nodejs/html/templates/news.html",
 		"/C/Donwloads/curl-master/curl-master/test/domReady.html",
@@ -285,6 +300,34 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"pretti",
+			"template_files",
+			"template_subdir",
+			"AnchorTemplate",
+			"template_breakdown",
+			"isShowName",
+			"isShowType",
+			"toUp",
+			"createDir",
+			"openCreateDir",
+			"dropUploadFile",
+			"openUploadFile",
+			"addURL",
+			"openAddURL",
+			"addURL",
+			"sortByName",
+			"afficherFiltre",
+			"filtrer(",
+			"filtrer",
+			"handleKeyPress",
+			"showLoadModal",
+			"sortElmnt",
+			"tmpl",
+			"getUrlVar",
+			"startsWith",
+			"!order",
+			"boutonArreter",
+			"closePopup",
 			"updatePieCharte",
 			"theDiffStringCountdown",
 			"\n",
