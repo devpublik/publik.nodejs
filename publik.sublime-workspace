@@ -63,6 +63,22 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "html/js/lib/common/utils.js",
+			"settings":
+			{
+				"buffer_size": 7812,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "html/index.html",
+			"settings":
+			{
+				"buffer_size": 6039,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -156,6 +172,20 @@
 	},
 	"file_history":
 	[
+		"/C/skarb/git/publik.nodejs/html/js/lib/common/utils.js",
+		"/C/skarb/git/publik.nodejs/html/templates/menu.html",
+		"/C/skarb/git/publik.nodejs/html/js/apps/news.js",
+		"/C/skarb/git/publik.nodejs/config.js",
+		"/C/skarb/git/publik.nodejs/node_modules/multipart/package.json",
+		"/C/skarb/git/publik.nodejs/node_modules/redis/package.json",
+		"/C/skarb/git/publik.nodejs/html/js/lib/common/jquery-1.8.2.min.js",
+		"/C/skarb/git/publik.nodejs/html/js/lib/common/jquerysort.js",
+		"/C/skarb/git/publik.nodejs/config.json",
+		"/C/skarb/git/publik.nodejs/make.bat",
+		"/C/skarb/git/IzPack/bin/compile.bat",
+		"/C/skarb/IzPack/bin/compile.bat",
+		"/C/skarb/git/publik.nodejs/node_modules/formidable/package.json",
+		"/C/skarb/git/publik.nodejs/node_modules/connect/package.json",
 		"/C/skarb/git/publik.nodejs/html/ged/index.html",
 		"/C/skarb/git/publik.nodejs/html/js/apps/ged.js",
 		"/C/skarb/git/publik.nodejs/html/js/apps/postit.js",
@@ -166,20 +196,16 @@
 		"/C/skarb/git/publik.nodejs/html/timer/index.html",
 		"/C/Users/skarb/IdeaProjects/untitled/src/main/scala/helloworld/Helloworld.scala",
 		"/C/Users/skarb/IdeaProjects/untitled1/src/helloworld/Helloworld.scala",
-		"/C/skarb/git/publik.nodejs/html/js/lib/common/utils.js",
 		"/C/skarb/git/publik.nodejs/html/js/apps/timer.js",
 		"/C/skarb/git/publik.nodejs/html/js/apps/popup.js",
-		"/C/skarb/git/publik.nodejs/html/js/apps/news.js",
 		"/C/skarb/git/publik.nodejs/html/js/jquery.sparkline.min.js",
 		"/C/skarb/git/publik.nodejs/html/js/lib/ui/countdown.js",
 		"/C/skarb/git/publik.nodejs/html/timer/popup.html",
 		"/C/skarb/git/publik.nodejs/html/js/lib/ui/richeditor/wysiwyg.table.js",
 		"/C/skarb/git/publik.nodejs/html/js/lib/ui/jquery-ui-1.9.1.custom.min.js",
 		"/C/skarb/git/publik.nodejs/html/index.html",
-		"/C/skarb/git/publik.nodejs/html/js/lib/common/jquerysort.js",
 		"/C/skarb/git/publik.nodejs/html/js/config.curl.js",
 		"/C/skarb/git/publik.nodejs/html/templates/news/user_tmpl.html",
-		"/C/skarb/git/publik.nodejs/html/templates/menu.html",
 		"/C/skarb/git/publik.nodejs/html/templates.html",
 		"/C/skarb/git/publik.nodejs/html/templates/postit/postit.html",
 		"/C/skarb/git/publik.nodejs/html/css/publik.css",
@@ -273,10 +299,7 @@
 		"/C/eclipse/publik/publik/html/templates.html",
 		"/C/eclipse/publik/publik/html/timer/index.html",
 		"/C/eclipse/publik/publik/html/timer/popup.html",
-		"/C/eclipse/publik/publik/html/css/bootstrap-responsive.css",
-		"/C/eclipse/publik/redis-2.0.2/launch_redis.bat",
-		"/C/eclipse/publik/test.css",
-		"/C/eclipse/publik/redis-2.0.2/appendonly.aof"
+		"/C/eclipse/publik/publik/html/css/bootstrap-responsive.css"
 	],
 	"find":
 	{
@@ -284,7 +307,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 90.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"C:\\skarb\\git\\publik.nodejs",
@@ -391,8 +414,65 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "html/js/lib/common/utils.js",
+					"settings":
+					{
+						"buffer_size": 7812,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								824,
+								824
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1833.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "html/index.html",
+					"settings":
+					{
+						"buffer_size": 6039,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4179,
+								4179
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 897.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
