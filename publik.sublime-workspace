@@ -64,18 +64,10 @@
 	"buffers":
 	[
 		{
-			"file": "html/js/lib/common/utils.js",
+			"file": "action/documents.read.js",
 			"settings":
 			{
-				"buffer_size": 7812,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "html/index.html",
-			"settings":
-			{
-				"buffer_size": 6039,
+				"buffer_size": 3016,
 				"line_ending": "Windows"
 			}
 		}
@@ -172,7 +164,12 @@
 	},
 	"file_history":
 	[
+		"/C/Program Files/nodejs/node_modules/npm/node_modules/fstream/fstream.js",
+		"/C/skarb/git/publik.nodejs/action/documents.read.js",
+		"/C/skarb/git/publik.nodejs/action/documents.put.js",
+		"/C/skarb/git/publik.nodejs/html/index.html",
 		"/C/skarb/git/publik.nodejs/html/js/lib/common/utils.js",
+		"/C/Users/skarb/Desktop/livre a regarder.txt",
 		"/C/skarb/git/publik.nodejs/html/templates/menu.html",
 		"/C/skarb/git/publik.nodejs/html/js/apps/news.js",
 		"/C/skarb/git/publik.nodejs/config.js",
@@ -203,7 +200,6 @@
 		"/C/skarb/git/publik.nodejs/html/timer/popup.html",
 		"/C/skarb/git/publik.nodejs/html/js/lib/ui/richeditor/wysiwyg.table.js",
 		"/C/skarb/git/publik.nodejs/html/js/lib/ui/jquery-ui-1.9.1.custom.min.js",
-		"/C/skarb/git/publik.nodejs/html/index.html",
 		"/C/skarb/git/publik.nodejs/html/js/config.curl.js",
 		"/C/skarb/git/publik.nodejs/html/templates/news/user_tmpl.html",
 		"/C/skarb/git/publik.nodejs/html/templates.html",
@@ -295,11 +291,7 @@
 		"/C/Donwloads/jwysiwyg-master/jwysiwyg-master/help/examples/02-full.html",
 		"/C/eclipse/publik/publik/html/js/jwysiwyg/default.js",
 		"/C/Donwloads/jwysiwyg-master/jwysiwyg-master/controls/wysiwyg.link.js",
-		"/C/Donwloads/html/html/readme.txt",
-		"/C/eclipse/publik/publik/html/templates.html",
-		"/C/eclipse/publik/publik/html/timer/index.html",
-		"/C/eclipse/publik/publik/html/timer/popup.html",
-		"/C/eclipse/publik/publik/html/css/bootstrap-responsive.css"
+		"/C/Donwloads/html/html/readme.txt"
 	],
 	"find":
 	{
@@ -414,61 +406,32 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "html/js/lib/common/utils.js",
+					"file": "action/documents.read.js",
 					"settings":
 					{
-						"buffer_size": 7812,
+						"buffer_size": 3016,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								824,
-								824
+								1310,
+								1310
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1833.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "html/index.html",
-					"settings":
-					{
-						"buffer_size": 6039,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4179,
-								4179
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 897.0,
+						"translation.y": 546.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

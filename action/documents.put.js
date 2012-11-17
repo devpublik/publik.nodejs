@@ -86,6 +86,7 @@ exports.action = function(req,res){
 	switch (jsonquery.query.type){
 		case "directory" :
 			 path = documentFolder+jsonquery.query.path;
+			console.log("repertoire name : "+path);
 			fs.exists( path,function (exists) {
 				if(!exists){
 					fs.mkdirSync(path);

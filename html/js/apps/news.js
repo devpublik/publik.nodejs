@@ -1,5 +1,5 @@
 // définition of News reader module.,'domReady!'
-define(["common/utils", "text!templates/menu.html"], function(Utils, Menu) {
+define(["common/utils", "text!templates/menu.html",,"js!common/screenfull.min.js"], function(Utils, Menu) {
 
     var treatNews = function(item, place) {
             var title = $(item).find("title").text();
@@ -14,7 +14,7 @@ define(["common/utils", "text!templates/menu.html"], function(Utils, Menu) {
         init: function() {
             console.log("loading news");
             $("body").append("<div id=\"templates\" ></div>");
-            // Gestion du menu.
+            // management of the left menu.
             $("#menu").html(Menu).css("height", "800px").css("display", "inline");
             var path = window.location.href;
             $(".lienMenuPrincipal").each(function() {
@@ -25,7 +25,7 @@ define(["common/utils", "text!templates/menu.html"], function(Utils, Menu) {
                 }
             });
 
-
+            // display the news
             $.get("/services", {
                 action: "news"
             }, function(html) {
@@ -40,6 +40,19 @@ define(["common/utils", "text!templates/menu.html"], function(Utils, Menu) {
                 }
             }, "xml");
 
+            // manage fullscreen.
+            if (screenfull.enabled) {
+                $("#fullScreen").click(function(){
+                    if(!screenfull.isFullscreen){
+                        screenfull.request();
+                    } else {
+                         screenfull.exit();
+                    }
+                })
+                
+            } else {
+                 $("#fullScreen").hide();
+            }
         }
     }
 });

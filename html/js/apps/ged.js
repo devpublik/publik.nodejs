@@ -1,14 +1,12 @@
-
 /**
-* module to manage GED.
-**/
-define(["common/utils","text!templates/ged/anchor.html","text!templates/ged/template_subdir.html","text!templates/ged/template_files.html"], 
-    function(Utils,AnchorTemplate,SubdirTemplate,FilesTemplate) {
-        
+ * module to manage GED.
+ **/
+define(["common/utils", "text!templates/ged/anchor.html", "text!templates/ged/template_subdir.html", "text!templates/ged/template_files.html"], function(Utils, AnchorTemplate, SubdirTemplate, FilesTemplate) {
+
     var sens;
     /**
-    * private functions.
-    **/
+     * private functions.
+     **/
     var showLoadModal = function() {
             $("#loadModal").modal();
         },
@@ -80,16 +78,16 @@ define(["common/utils","text!templates/ged/anchor.html","text!templates/ged/temp
             return valueSelected == "" || valueSelected == objet.attr("data-filter")
         };
     /**
-    * Objet to manage.
-    **/
+     * Objet to manage.
+     **/
     return {
         /**
-        * common directory.
-        **/
+         * common directory.
+         **/
         ROOT: "/",
         /**
-        * To up in the hierarchy directory.
-        **/
+         * To up in the hierarchy directory.
+         **/
         toUp: function() {
             var actualPath = $("#pathdir").val(),
                 li;
@@ -102,8 +100,8 @@ define(["common/utils","text!templates/ged/anchor.html","text!templates/ged/temp
             } else document.location = ROOT + actualPath.substring(0, li);
         },
         /**
-        * call the create directory method.
-        **/
+         * call the create directory method.
+         **/
         createDir: function() {
             var newdir = $("#dirName").val(),
                 pathAbsolute;
@@ -130,22 +128,22 @@ define(["common/utils","text!templates/ged/anchor.html","text!templates/ged/temp
             return false;
         },
         /**
-        * open the create directory dialog box.
-        **/
+         * open the create directory dialog box.
+         **/
         openCreateDir: function() {
             $("#dirName_control_group").removeClass("error");
             $("#addDirectoryModal").modal();
             return false;
         },
-         /**
-        * upload the file and refresh the page.
-        **/
+        /**
+         * upload the file and refresh the page.
+         **/
         dropUploadFile: function(evt) {
             innerdropUploadFile(evt);
         },
-         /**
-        * open the upload dialog box.
-        **/
+        /**
+         * open the upload dialog box.
+         **/
         openUploadFile: function() {
             if (window.FormData) {
                 formUploadFile = new FormData();
@@ -157,8 +155,8 @@ define(["common/utils","text!templates/ged/anchor.html","text!templates/ged/temp
             return false;
         },
         /**
-        * add a new url in ged document.
-        **/
+         * add a new url in ged document.
+         **/
         addURL: function() {
             var name = $("#urlName").val(),
                 adress = $("#adress").val();
@@ -189,16 +187,16 @@ define(["common/utils","text!templates/ged/anchor.html","text!templates/ged/temp
             return false;
         },
         /**
-        * open the add url dialog box.
-        **/
+         * open the add url dialog box.
+         **/
         openAddURL: function() {
             $("#urlName_control_group").removeClass("error");
             $("#adress_control_group").removeClass("error");
             $("#addURLModal").modal();
         },
         /**
-        * show/hide the zone filters.
-        **/
+         * show/hide the zone filters.
+         **/
         afficherFiltre: function(o, selector) {
             var elt = $(o);
             var show = elt.attr("data-ged-push") != "true";
@@ -207,8 +205,8 @@ define(["common/utils","text!templates/ged/anchor.html","text!templates/ged/temp
             elt.attr("data-ged-push", show);
         },
         /**
-        *  filters the list of files.
-        **/
+         *  filters the list of files.
+         **/
         filtrer: function() {
             $("#currentdirectory").children().each(function() {
                 var objet = $(this);
@@ -230,8 +228,8 @@ define(["common/utils","text!templates/ged/anchor.html","text!templates/ged/temp
             innerSorts(but);
         },
         /**
-        * initialize the page.
-        **/
+         * initialize the page.
+         **/
         init: function() {
             var formUploadFile, filtersTypeahead = "[";
 
@@ -256,7 +254,7 @@ define(["common/utils","text!templates/ged/anchor.html","text!templates/ged/temp
                     }
                     oldPath = oldPath + currentTagTokens[i];
 
-                        anchorRoot.append(Utils.tmpl(AnchorTemplate, {
+                    anchorRoot.append(Utils.tmpl(AnchorTemplate, {
                         "urlA": oldPath,
                         "urlB": currentTagTokens[i]
                     }));
@@ -276,43 +274,46 @@ define(["common/utils","text!templates/ged/anchor.html","text!templates/ged/temp
                 action: "documents.read",
                 "path": path
             }, function(resultat) {
-              //  console.log(resultat);
-
-
-                $.each(resultat, function(key) {
-                    var tmhref = "/services?action=documents.read&path=" + this.path,
-                        filterData;
-                    if (this.type == "directory") {
-                        tmhref = ROOT + this.path;
-                    }
-
-                    if (filtersTypeahead.length > 1) filtersTypeahead += ",";
-
-
-                    if (this.type == "url") {
-                        filterData = this.path.replace(path + "/", "").replace("/", "").replace(".url", "");
-                        filtersTypeahead += '"' + filterData + '"';
-                    } else {
-                        filterData = this.path.replace(path + "/", "").replace("/", "");
-                        filtersTypeahead += '"' + filterData + '"';
-                    }
-
-
-                    var tmpHTML = Utils.tmpl(FilesTemplate, {
-                        data: {
-                            type: this.type,
-                            path: this.path.replace(path + "/", ""),
-                            datemdf: this.dmodif
-                        },
-                        hreaf: tmhref,
-                        filter: filterData
-                    });
-                    $("#currentdirectory").append(tmpHTML);
-                    $("#filterOnName").attr("data-source", filtersTypeahead + "]");
-
-                    innerSorts();
+                // if no files
+                if (resultat.length == 0) {
                     hideLoadModal();
-                });
+                } else {
+                    // for each files.
+                    $.each(resultat, function(key) {
+                        var tmhref = "/services?action=documents.read&path=" + this.path,
+                            filterData;
+                        if (this.type == "directory") {
+                            tmhref = ROOT + this.path;
+                        }
+
+                        if (filtersTypeahead.length > 1) filtersTypeahead += ",";
+
+
+                        if (this.type == "url") {
+                            filterData = this.path.replace(path + "/", "").replace("/", "").replace(".url", "");
+                            filtersTypeahead += '"' + filterData + '"';
+                        } else {
+                            filterData = this.path.replace(path + "/", "").replace("/", "");
+                            filtersTypeahead += '"' + filterData + '"';
+                        }
+
+
+                        var tmpHTML = Utils.tmpl(FilesTemplate, {
+                            data: {
+                                type: this.type,
+                                path: this.path.replace(path + "/", ""),
+                                datemdf: this.dmodif
+                            },
+                            hreaf: tmhref,
+                            filter: filterData
+                        });
+                        $("#currentdirectory").append(tmpHTML);
+                        $("#filterOnName").attr("data-source", filtersTypeahead + "]");
+
+                        innerSorts();
+                        hideLoadModal();
+                    });
+                }
             });
 
             $("#holder")[0].ondrop = function(evt) {
