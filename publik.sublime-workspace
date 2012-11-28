@@ -4,6 +4,62 @@
 		"selected_items":
 		[
 			[
+				"va",
+				"valueOfSearch"
+			],
+			[
+				"sear",
+				"searchByName"
+			],
+			[
+				"to",
+				"toLowerCase"
+			],
+			[
+				"new",
+				"News"
+			],
+			[
+				"repl",
+				"reply"
+			],
+			[
+				"for",
+				"forEach"
+			],
+			[
+				"re",
+				"replies"
+			],
+			[
+				"rer",
+				"return"
+			],
+			[
+				"dele",
+				"deleteAll"
+			],
+			[
+				"a",
+				"absolutePath"
+			],
+			[
+				"pa",
+				"parentPath"
+			],
+			[
+				"paren",
+				"parentPath"
+			],
+			[
+				"par",
+				"parentPath"
+			],
+			[
+				"do",
+				"documentFolder"
+			],
+			[
 				"fun",
 				"function"
 			],
@@ -18,10 +74,6 @@
 			[
 				"el",
 				"el2"
-			],
-			[
-				"pa",
-				"parents  (function)"
 			],
 			[
 				"target",
@@ -63,23 +115,15 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "action/documents.read.js",
-			"settings":
-			{
-				"buffer_size": 3016,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 288.0,
+		"height": 357.0,
 		"selected_items":
 		[
 			[
-				"preti",
+				"prett",
 				"HTMLPrettify: Prettify"
 			],
 			[
@@ -87,7 +131,23 @@
 				"HTMLPrettify: Prettify"
 			],
 			[
-				"prett",
+				"rettit",
+				"HTMLPrettify: Prettify"
+			],
+			[
+				"Prett",
+				"HTMLPrettify: Prettify"
+			],
+			[
+				"pre",
+				"HTMLPrettify: Prettify"
+			],
+			[
+				"pretty",
+				"HTMLPrettify: Prettify"
+			],
+			[
+				"preti",
 				"HTMLPrettify: Prettify"
 			],
 			[
@@ -99,15 +159,7 @@
 				"HTMLPrettify: Prettify"
 			],
 			[
-				"pre",
-				"HTMLPrettify: Prettify"
-			],
-			[
 				"prettify",
-				"HTMLPrettify: Prettify"
-			],
-			[
-				"pretty",
 				"HTMLPrettify: Prettify"
 			],
 			[
@@ -164,14 +216,47 @@
 	},
 	"file_history":
 	[
-		"/C/Program Files/nodejs/node_modules/npm/node_modules/fstream/fstream.js",
+		"/C/Donwloads/socket.io-client-master/socket.io-client-master/lib/socket.js",
+		"/C/MinGW/msys/1.0/etc/fstab",
+		"/C/skarb/play-2.0.4/play.bat",
+		"/C/Donwloads/socket.io-master/socket.io-master/lib/transports/xhr-polling.js",
+		"/C/Donwloads/socket.io-master/socket.io-master/lib/socket.io.js",
+		"/C/Donwloads/socket.io-master/socket.io-master/index.js",
+		"/C/Donwloads/socket.io-client-master/socket.io-client-master/lib/socket.io-client.js",
+		"/C/Donwloads/socket.io-client-master/socket.io-client-master/lib/io.js",
+		"/C/Donwloads/socket.io-client-master/socket.io-client-master/lib/transports/htmlfile.js",
+		"/C/Donwloads/socket.io-client-master/socket.io-client-master/lib/transports/xhr-polling.js",
+		"/C/Donwloads/socket.io-client-master/socket.io-client-master/lib/transport.js",
+		"/C/Donwloads/link-ap-dev/link-ap-dev/index.html",
+		"/C/Donwloads/link-ap-dev/link-ap-dev/host/main.js",
+		"/C/Donwloads/link-ap-dev/link-ap-dev/host/welcome.js",
+		"/C/Donwloads/link-ap-dev/link-ap-dev/lib/link-ap.js",
+		"/C/Donwloads/link-ap-dev/link-ap-dev/lib/workers/agent.js",
+		"/C/skarb/git/publik.nodejs/html/ged/index.html",
+		"/C/skarb/git/publik.nodejs/action/document.search.js",
 		"/C/skarb/git/publik.nodejs/action/documents.read.js",
-		"/C/skarb/git/publik.nodejs/action/documents.put.js",
-		"/C/skarb/git/publik.nodejs/html/index.html",
-		"/C/skarb/git/publik.nodejs/html/js/lib/common/utils.js",
-		"/C/Users/skarb/Desktop/livre a regarder.txt",
-		"/C/skarb/git/publik.nodejs/html/templates/menu.html",
+		"/C/skarb/git/publik.nodejs/action/document.update.all.js",
 		"/C/skarb/git/publik.nodejs/html/js/apps/news.js",
+		"/C/Donwloads/link-ap-dev/link-ap-dev/Makefile",
+		"/C/Donwloads/link-ap-dev/link-ap-dev/lib/_setup/welcome.js",
+		"/C/Donwloads/link-ap-dev/link-ap-dev/tests/main.js",
+		"/C/skarb/git/publik.nodejs/app.js",
+		"/C/skarb/git/publik.nodejs/html/js/apps/ged.js",
+		"/C/skarb/git/publik.nodejs/action/news.js",
+		"/C/skarb/git/publik.nodejs/html/index.html",
+		"/C/skarb/git/publik.nodejs/html/templates/menu.html",
+		"/C/skarb/git/publik.nodejs/html/js/lib/common/utils.js",
+		"/C/Donwloads/bootstrap/bootstrap/js/bootstrap.js",
+		"/C/skarb/git/publik.nodejs/html/templates/news.html",
+		"/C/skarb/git/publik.nodejs/action/documents.put.js",
+		"/C/skarb/git/publik.nodejs/node_modules/redis/test.js",
+		"/C/skarb/git/publik.nodejs/node_modules/redis/lib/parser/hiredis.js",
+		"/C/skarb/git/publik.nodejs/node_modules/redis/examples/multi.js",
+		"/C/skarb/git/publik.nodejs/node_modules/redis/examples/subqueries.js",
+		"/C/skarb/git/publik.nodejs/node_modules/redis/examples/multi2.js",
+		"/C/skarb/git/publik.nodejs/test.js",
+		"/C/Program Files/nodejs/node_modules/npm/node_modules/fstream/fstream.js",
+		"/C/Users/skarb/Desktop/livre a regarder.txt",
 		"/C/skarb/git/publik.nodejs/config.js",
 		"/C/skarb/git/publik.nodejs/node_modules/multipart/package.json",
 		"/C/skarb/git/publik.nodejs/node_modules/redis/package.json",
@@ -183,8 +268,6 @@
 		"/C/skarb/IzPack/bin/compile.bat",
 		"/C/skarb/git/publik.nodejs/node_modules/formidable/package.json",
 		"/C/skarb/git/publik.nodejs/node_modules/connect/package.json",
-		"/C/skarb/git/publik.nodejs/html/ged/index.html",
-		"/C/skarb/git/publik.nodejs/html/js/apps/ged.js",
 		"/C/skarb/git/publik.nodejs/html/js/apps/postit.js",
 		"/C/skarb/git/publik.nodejs/html/js/config.sub.curl.js",
 		"/C/skarb/git/publik.nodejs/html/templates/ged/template_files.html",
@@ -205,7 +288,6 @@
 		"/C/skarb/git/publik.nodejs/html/templates.html",
 		"/C/skarb/git/publik.nodejs/html/templates/postit/postit.html",
 		"/C/skarb/git/publik.nodejs/html/css/publik.css",
-		"/C/skarb/git/publik.nodejs/html/templates/news.html",
 		"/C/Donwloads/curl-master/curl-master/test/domReady.html",
 		"/C/Donwloads/curl-master/curl-master/test/defineContext.html",
 		"/C/Donwloads/curl-master/curl-master/test/stuff/one.js",
@@ -261,37 +343,7 @@
 		"/C/eclipse/publik/publik/action/postit.create.js",
 		"/C/eclipse/publik/publik/action/postit.read.js",
 		"/C/eclipse/publik/publik/html/js/dateFormat.js",
-		"/C/eclipse/publik/publik/html/js/jwysiwyg/wysiwyg.link.js",
-		"/C/eclipse/publik/publik/html/js/jquery-ui-1.9.1.custom.js",
-		"/C/eclipse/publik/publik/html/js/jwysiwyg/jquery.wysiwyg.js",
-		"/C/eclipse/publik/publik/html/js/jquery.contextMenu.min.js",
-		"/C/eclipse/publik/publik/html/ged/index.html",
-		"/C/eclipse/publik/publik/html/ged/js/ged.js",
-		"/C/eclipse/publik/publik/redis-2.0.2/redis.conf",
-		"/C/eclipse/publik/publik/launch_redis.bat",
-		"/C/eclipse/publik/publik/action/documents.read.js",
-		"/C/eclipse/publik/publik/app.js",
-		"/C/eclipse/publik/publik/node_modules/redis/examples/monitor.js",
-		"/C/eclipse/publik/publik/action/documents.put.js",
-		"/C/eclipse/publik/publik/action/news.js",
-		"/C/eclipse/publik/publik/test_redis.js",
-		"/C/eclipse/publik/publik/redis-2.0.2/appendonly.aof",
-		"/C/eclipse/publik/publik/node_modules/redis/examples/mget.js",
-		"/C/eclipse/publik/publik/node_modules/redis/examples/simple.js",
-		"/C/eclipse/publik/publik/node_modules/redis/examples/subqueries.js",
-		"/C/eclipse/publik/publik/node_modules/redis/examples/eval.js",
-		"/C/eclipse/publik/publik/node_modules/redis/examples/backpressure_drain.js",
-		"/C/eclipse/publik/publik/node_modules/redis/examples/auth.js",
-		"/C/eclipse/publik/publik/node_modules/redis/examples/multi2.js",
-		"/C/eclipse/publik/publik/node_modules/redis/lib/commands.js",
-		"/C/eclipse/publik/publik/node_modules/redis/lib/queue.js",
-		"/C/eclipse/publik/publik/config.js",
-		"/C/eclipse/publik/publik/html/css/jquery.wysiwyg.css",
-		"/C/Donwloads/jwysiwyg-master/jwysiwyg-master/help/examples/01-basic.html",
-		"/C/Donwloads/jwysiwyg-master/jwysiwyg-master/help/examples/02-full.html",
-		"/C/eclipse/publik/publik/html/js/jwysiwyg/default.js",
-		"/C/Donwloads/jwysiwyg-master/jwysiwyg-master/controls/wysiwyg.link.js",
-		"/C/Donwloads/html/html/readme.txt"
+		"/C/eclipse/publik/publik/html/js/jwysiwyg/wysiwyg.link.js"
 	],
 	"find":
 	{
@@ -302,6 +354,7 @@
 		"height": 0.0,
 		"where_history":
 		[
+			"C:\\skarb\\git\\publik.nodejs\\node_modules\\redis",
 			"C:\\skarb\\git\\publik.nodejs",
 			"C:\\eclipse\\publik\\publik\\html\\",
 			"C:\\Donwloads\\jwysiwyg-master,C:\\eclipse\\publik\\publik\\html\\timer",
@@ -315,6 +368,14 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"/lib",
+			"data",
+			"name",
+			">\n",
+			"print",
+			"postit",
+			"absolutepath",
+			"postit",
 			"pretti",
 			"template_files",
 			"template_subdir",
@@ -392,6 +453,11 @@
 		"regex": false,
 		"replace_history":
 		[
+			"results",
+			"value",
+			"ged",
+			"relativePath",
+			"ged",
 			"",
 			"re",
 			"",
@@ -406,36 +472,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "action/documents.read.js",
-					"settings":
-					{
-						"buffer_size": 3016,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1310,
-								1310
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 546.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -507,6 +545,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 315.0,
+	"side_bar_width": 314.0,
 	"status_bar_visible": true
 }
