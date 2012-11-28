@@ -39,7 +39,7 @@ define(["common/utils", "text!templates/menu.html"], function(Utils, Menu) {
                     treatNews(items[1], "#newsFeed2");
                 }
             }, "xml");
-
+            // search form management
             $("#searchGed").typeahead({
                 source: function(typeahead, query) {
                     $.ajax({
@@ -97,8 +97,14 @@ define(["common/utils", "text!templates/menu.html"], function(Utils, Menu) {
                     });
                 }
             });
-
+            // menu management
+            $("#gedRefresh").click(function(evt) {
+                $.get("/services", {
+                    action: "documents.update.all"
+                }, function(html) {
+                    document.location.reload();
+                });
+            });
         }
     }
 });
-

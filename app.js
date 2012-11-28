@@ -34,6 +34,7 @@ var app = connect()
 .use("/services",function(req, res){
 	
 	var jsonObject = require('url').parse(req.url,true);
+  console.log(jsonObject.query.action)
 	require("./action/" +
 			jsonObject.query.action +
 			".js").action(req,res);

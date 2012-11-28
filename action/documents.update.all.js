@@ -149,4 +149,6 @@ exports.action = function(req, res) {
      nbfiles = 0;
     currentfiles = 0;
     travelTreeFiles("", null);
+    res.statusCode = 200;
+      res.end('OK');
 };
