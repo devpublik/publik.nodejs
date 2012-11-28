@@ -47,6 +47,9 @@ function ko(err, res) {
     res.end('KO');
 }
 
+/**
+* transform the path url parameter on string.
+**/
 function parsePathParameter(jsonquery) {
     var querystring = require("querystring");
     var raw = querystring.parse(jsonquery.query.path);
@@ -67,17 +70,12 @@ exports.action = function(req, res) {
     var jsonquery = require('url').parse(req.url, true),
         path, retour = [],
         documentFolder = config.get("documentFolder");
-/*path=documentFolder+"/"+jsonquery.query.path;
-	var raw = querystring.parse(jsonquery.query.path);
-	console.log("dsd "+JSON.stringify(jsonquery))
-	console.log("dsd 2"+JSON.stringify(raw));
-	var data = raw ? raw : {};
-	data = raw.data ? JSON.parse(raw.data) : data;*/
+
     var tytypath = parsePathParameter(jsonquery);
-    console.log("dsd " + tytypath)
+    //console.log("dsd " + tytypath)
     var path = documentFolder + "/" + tytypath;
     //path = pathlib.join(documentFolder,tytypath);
-    console.log("dsd " + pathlib.resolve(path))
+    //console.log("dsd " + pathlib.resolve(path))
 
     fs.stat(path, function(err, stats) {
         if (err) {

@@ -20,6 +20,8 @@ child= exec("launch_redis.bat",
     }
 });
 
+//require("./action/documents.update.all.js").action();
+
 
 /**
  * Launch Http server of the node JS

@@ -2,7 +2,7 @@
 var ____UTILS;
 
 
-define(['js!common/jquery-1.8.2.min.js!order', 'js!common/bootstrap.min.js!order', "js!common/jquerysort.js!order",,"js!jquery.sparkline.min.js!order"], function() {
+define(['js!common/jquery-1.8.2.min.js!order', 'js!common/bootstrap.js!order', "js!common/jquerysort.js!order","js!common/screenfull.min.js!order","js!jquery.sparkline.min.js!order"], function() {
     var cache = {};
     // test if singletin is created
     if (!____UTILS) {

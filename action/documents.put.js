@@ -76,7 +76,24 @@ function upload_file(req, res,path) {
          res.writeHead(405, "Method not supported", {'Content-Type': 'text/html'});
          res.end('<html><head><title>405 - Method not supported</title></head><body><h1>Method not supported.</h1></body></html>');
        }
-}	
+}	{
+
+function createOnRedis(type,name,path){
+	var redis = require("redis"),
+        client = redis.createClient();
+    client.send_command("INCR",["ged"], function (out,key,dd){
+		if(!out){
+    		console.log("Nouvelle clé "+key);
+    		client.hset(["ged:"+key, "id", key], redis.print);
+    		client.hset(["ged:"+key, "type", type], redis.print);
+    		client.hset(["ged:"+key, "name", name], redis.print);
+    		client.hset(["ged:"+key, "path", path], redis.print);
+    		client.send_command("BGSAVE",tmp, function (out,tt,dd){
+     			console.log(" Enregistrement sur le disque "+tt);
+			});
+ 		}
+	});
+}
 
 /**
 * mainfeatures of the rest service.
@@ -108,6 +125,7 @@ exports.action = function(req,res){
 		default : 
 			console.log(jsonquery);
 	}
+	//createOnRedis(jsonquery.query.type,jsonquery.query.name)
 	console.log("appeler OK");
 	ok(req, res);
 }

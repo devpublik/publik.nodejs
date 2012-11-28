@@ -8,20 +8,28 @@
                 <li>
                     <a id="" href="#">NEWS :</a>
                 </li>
-                <li class="divider-vertical">
-                </li>
+              
                 <li>
                     <a id="newsFeed" href="#" target="_blank"></a>
                 </li>
                 <li>
                     <a id="newsFeed2" href="#" target="_blank"></a>
                 </li>
+                 <li class="divider-vertical">
+                </li>
+                <li>
+                    <form id="formSearchGed" action="/services" class="navbar-search " method="GET">
+                        <input type="hidden" name="action" value="documents.read">
+                        <input type="hidden" id="formPathGed" name="path" value="">
+                        <input type="text" class="search-query" placeholder="Documentation"  id="searchGed">
+                    </form>
+                </li>
             </ul>
              
         </div>
-            <form class="navbar-form pull-rigth">
-                <button id="fullScreen" class="btn"><i class="icon-fullscreen"></i></button>
-            </form>
+          <!--   <form class="navbar-form pull-rigth">
+                <button id="fullScreen" onclick="News.toChangeScreen();" class="btn"><i class="icon-fullscreen"></i></button>
+            </form> -->
     </div>
 
 </div>
