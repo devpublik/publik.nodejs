@@ -1,0 +1,55 @@
+.bg-publik {
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    background-color: #F7F7F9;
+    border: 1px solid #E1E1E8;}
+
+.context-menu-publik {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 20000;
+}
+
+
+#buttons-pad {
+    position: fixed;
+    top: 250px;
+    left: 50px;
+}
+
+.searchGed {
+    width: 25px;
+}
+
+/************************************/
+/* Postit */
+/************************************/
+
+.postit-publik {
+    background-image: url("../img/postit.png");
+    background-repeat: no-repeat;
+    width: 232px;
+    height: 230px;
+    display: inline-block;
+   /* z-index: 8000;*/
+}
+
+.postit-header-publik {
+	padding: 8px;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    text-align: center;
+    width:  232px;
+}
+
+.postit-content-publik{
+ 	position: relative;
+    text-align: justify;
+ 	padding: 8px;
+    left: 0px;
+    /*width:   230px;
+    max-width:  230px;*/
+    height: 204px;
+}

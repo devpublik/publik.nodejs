@@ -1,0 +1,136 @@
+@(name:String,selected:String,pathSound:Map[String,String])
+@import helper._
+@import helper.twitterBootstrap._
+@main("Publik - Timer", name) {
+<form class="form-horizontal " id="form-launch" name="form-launch" method="POST" action="@routes.Timer.popup" target="formtarget" onsubmit="return TIMER.calculatePopupSize(this.target)"  >
+    <fieldset>
+        <div class="control-group" style="vertical-align: top;">
+            <label class="control-label" for="heure">
+                Heure :
+            </label>
+            <div class="controls">
+                <input type="number" class="input-mini heigthInputs" id="heure" name="hour" maxlength="2"
+                       value="00">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="minute">
+                Minute :
+            </label>
+            <div class="controls">
+                <input type="number" class="input-mini heigthInputs" id="minute" name="minute" maxlength="2"
+                       value="30">
+                <p class="help-block">
+                    Merci de préciser le temps de l'exercice (HH24:MI).
+                </p>
+            </div>
+        </div>
+        <div class="control-group" style="vertical-align:bottom; ;">
+            <label class="control-label" for="soundSelect">
+                Sonnerie :
+            </label>
+            <div class="controls">
+                <select id="soundSelect" name="sound">
+                    @pathSound.keys.map{ k=>
+                    <option value="@routes.Assets.at(pathSound(k))" @if(k == selected){
+                    selected="selected"
+                    }>
+                        @k
+                    </option>
+                    }
+                </select>
+            </div>
+
+        </div>
+        <div class="offset1" >
+            <audio src="/timer/sound/1" id="sampler" controls="controls">
+            </audio>
+        </div>
+        <div class="form-actions">
+            <button id="launch" type="button" class="btn btn-primary" onclick="TIMER.launchPopup()">
+                Lancer
+            </button>
+            <button class="btn hide" type="button" id="stop" onclick="TIMER.closePopup();">
+                Arrêter
+            </button>
+        </div>
+    </fieldset>
+</form>
+<div id="buttons-pad" style="">
+        <a class="btn btn-danger" type="button" data-toggle="modal" href="#wizard"><i class=" icon-plus icon-white"></i> Ajouter</a>
+
+</div>
+<div id="wizard" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"  >
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Sons</h3>
+    </div>
+
+    <div class="modal-body">
+       <form action="#" class=""  >
+         <div id="select_control_group" class="control-group">
+            <div class="control-label span2" >Type d'action : </div>
+            <div class="controls " >
+            <div class="btn-toolbar" >
+                <div class="  btn-group" data-toggle="buttons-radio">
+                    <button id="action" type="button" class="btn active">Ajouter</button>
+                    <button type="button" class="btn">Supprimer</button>
+                </div>
+            </div>
+           </div>
+         </div>
+         <div id="name_control_group" class="control-group">
+               <div class="control-label span2" >Nom : </div>
+               <div class="controls " >
+                   <input type="text" value="" name="name" class="input-medium search-query" >
+               </div>
+         </div>
+           <div id="fileName_control_group" class="control-group">
+               <article>
+                   <div id="holder" ondrop=";" ondragover="this.className = 'hover';return false;"
+                        ondragend="this.className = '';return false;">
+                   </div>
+                   <p style="text-align: center;">
+                       D&eacute;poser un nouveau mp3 dans la zone pour valider l'ajout
+                   </p>
+
+               </article>
+           </div>
+       </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn hide " data-dismiss="modal" aria-hidden="true">Close</button>
+        <button class="btn btn-primary">Suivant</button>
+        <button class="btn btn-primary">Précédent</button>
+
+    </div>
+</div>
+<div class="modal hide" id="erreurModal">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+            ×
+        </button>
+        <h3>
+            Erreur
+        </h3>
+    </div>
+    <div id="erreurBody" class="modal-body">
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="btn" data-dismiss="modal">Fermer</a>
+    </div>
+</div>
+<script type="text/javascript">
+    var TIMER,POPUPW;
+    curl( // fetch all of these resources ("dependencies")
+    ["apps/news", "apps/timer"])
+    // when they are loaded
+    .then(function(News, Timer) {
+    console.log("init News");
+    News.init();
+        TIMER = Timer;
+    Timer.init();
+    });
+</script>
+
+}

@@ -1,0 +1,98 @@
+@(title: String, page: String)(content: Html)
+@import models.ApplicationPage._
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>@title</title>
+        <!--link rel="stylesheet" media="screen" href="@routes.Assets.at("css/main.css")"-->
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+        <link rel="stylesheet" type="text/css" href="@routes.Assets.at("css/bootstrap.min.css")">
+        <link rel="stylesheet" type="text/css" href="@routes.Assets.at("css/bootstrap-responsive.min.css")">
+        <link rel="stylesheet" type="text/css" href="@routes.Assets.at("css/publik.css")">
+        <link rel="stylesheet" href="@routes.Assets.at("css/jquery.wysiwyg.css")" type="text/css" media="screen"
+              charset="utf-8" />
+        <script  type="text/javascript"  >
+
+            // configure curl
+            curl = {
+            //  preloads: ['curl/debug'] ,
+            baseUrl: "@routes.Assets.at("js")",
+            paths: {
+            apps: 'apps',
+            common: 'lib/common',
+            ui: 'lib/ui',
+            re: 'lib/ui/richeditor',
+            templates: '../templates'
+            }
+            };
+        </script>
+        <script src="@routes.Assets.at("js/curl.js")" type="text/javascript"></script>
+    </head>
+    <body>
+    <div id="menu">
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="container pull-left">
+                    <a class="brand" href="#">Publik</a>
+                    <ul class="nav ">
+                        <li class="divider-vertical">
+                        </li>
+                        <li>
+                            <a id="" href="#">NEWS :</a>
+                        </li>
+                        <li>
+                            <a id="newsFeed" href="#" target="_blank"></a>
+                        </li>
+                        <li>
+                            <a id="newsFeed2" href="#" target="_blank"></a>
+                        </li>
+                        <li class="divider-vertical">
+                        </li>
+                        <li>
+                            <form id="formSearchGed" action="/services" class="navbar-search " method="GET">
+                                <input type="hidden" name="action" value="documents.read">
+                                <input type="hidden" id="formPathGed" name="path" value="">
+
+                                <input type="text" class="search-query" style="width: 125px;" placeholder="Documentation" id="searchGed">
+                            </form>
+                        </li>
+                    </ul>
+                    <ul class="nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="icon-wrench icon-white"></i>
+                                <b class="caret "></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a id="gedRefresh" href="#"><i class="icon-refresh"></i> Recharger</a>
+                                </li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="span2 bs-docs-sidebar">
+            <ul class="nav nav-list bs-docs-sidenav  bg-publik ">
+                <li class="nav-header">
+                    Menu
+                </li>
+
+                <li class=" @if(page == postit.toString()){active}  lienMenuPrincipal">
+                    <a href="/" class=""><i class="icon-home "></i>   Accueil   </a>
+                </li>
+                <li class="  @if(page == ged.toString()){active} lienMenuPrincipal">
+                    <a href="@routes.Documents.index" class=" "><i class=" icon-hdd"></i>   Documentation</a>
+                </li>
+                <li class=" @if(page == timer.toString()){active} lienMenuPrincipal">
+                    <a href="@routes.Timer.index" class=" "><i class="icon-time "></i>   Timer</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+        <ul id="bars"></ul>
+        @content
+    </body>
+</html>
