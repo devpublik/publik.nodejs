@@ -15,7 +15,11 @@ import xml.{NodeSeq, Elem}
  * To change this template use File | Settings | File Templates.
  */
 object News extends Controller {
-
+  /**
+   * Transform the result to the Json value.
+   * @param elem
+   * @return
+   */
   def parseXml (elem:Elem) :JsValue  = {
     var item = elem \\"item"
     val convert : PartialFunction[NodeSeq, JsValue] ={
@@ -31,7 +35,7 @@ object News extends Controller {
   }
 
   /**
-   * Web service calling
+   * Web service which load the news.
    * @return
    */
   def read = Action { implicit request =>

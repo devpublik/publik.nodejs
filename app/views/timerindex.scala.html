@@ -1,4 +1,4 @@
-@(name:String,selected:String,pathSound:Map[String,String])
+@(name:String,selected:String,pathSound:List[Map[String,String]])
 @import helper._
 @import helper.twitterBootstrap._
 @main("Publik - Timer", name) {
@@ -31,11 +31,11 @@
             </label>
             <div class="controls">
                 <select id="soundSelect" name="sound">
-                    @pathSound.keys.map{ k=>
-                    <option value="@routes.Assets.at(pathSound(k))" @if(k == selected){
+                    @pathSound.map{ k=>
+                    <option value="@k("id")" @if(k("id") == selected){
                     selected="selected"
                     }>
-                        @k
+                        @k("name")
                     </option>
                     }
                 </select>
@@ -43,8 +43,11 @@
 
         </div>
         <div class="offset1" >
-            <audio src="/timer/sound/1" id="sampler" controls="controls">
-            </audio>
+            @pathSound.filter( k => k("id") == selected ).map{ value =>
+
+                    <audio src="/timer/sound/@value("id")" id="sampler" controls="controls"></audio>
+            }
+
         </div>
         <div class="form-actions">
             <button id="launch" type="button" class="btn btn-primary" onclick="TIMER.launchPopup()">
@@ -57,7 +60,7 @@
     </fieldset>
 </form>
 <div id="buttons-pad" style="">
-        <a class="btn btn-danger" type="button" data-toggle="modal" href="#wizard"><i class=" icon-plus icon-white"></i> Ajouter</a>
+        <a class="btn btn-danger" type="button" data-toggle="modal" href="#wizard"><i class="icon-bell icon-white"></i> Sons</a>
 
 </div>
 <div id="wizard" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"  >
@@ -67,42 +70,52 @@
     </div>
 
     <div class="modal-body">
-       <form action="#" class=""  >
-         <div id="select_control_group" class="control-group">
+       <form action="/timer/del" id="delSoundForm" method="POST" >
+         <div id="select_control_group" class="control-group divModal">
             <div class="control-label span2" >Type d'action : </div>
             <div class="controls " >
             <div class="btn-toolbar" >
-                <div class="  btn-group" data-toggle="buttons-radio">
-                    <button id="action" type="button" class="btn active">Ajouter</button>
-                    <button type="button" class="btn">Supprimer</button>
+                <div class="  btn-group " data-toggle="buttons-radio">
+                    <button data-select-choice="add" type="button" class="select-choice btn active" onclick="TIMER.selectModal(event)">Ajouter</button>
+                    <button data-select-choice="del" type="button"  class="select-choice btn" onclick="TIMER.selectModal(event)">Supprimer</button>
                 </div>
             </div>
            </div>
          </div>
-         <div id="name_control_group" class="control-group">
+
+         <div id="supp_files_control_group" class="control-group hide divModal">
+             <div class="control-label " >Sélectionner les sons à supprimer : </div>
+             <div class="controls offset1" >
+
+                 @pathSound.map{ k=>
+                 <label class="checkbox">
+                     <input class="supp-value" name="ids" value="@k("id")" type="checkbox"> @k("name")
+                 </label>
+                 }
+
+             </div>
+
+</div> </form> <div id="name_control_group" class="control-group divModal">
                <div class="control-label span2" >Nom : </div>
                <div class="controls " >
-                   <input type="text" value="" name="name" class="input-medium search-query" >
+                   <input id="name" type="text" value="" name="name" class="input-medium search-query" >
                </div>
-         </div>
-           <div id="fileName_control_group" class="control-group">
+       </div>
+       <div id="fileName_control_group" class="control-group hide divModal">
                <article>
-                   <div id="holder" ondrop=";" ondragover="this.className = 'hover';return false;"
+                   <div id="holder" ondrop="TIMER.validateAdding(event)" ondragover="this.className = 'hover';return false;"
                         ondragend="this.className = '';return false;">
                    </div>
                    <p style="text-align: center;">
                        D&eacute;poser un nouveau mp3 dans la zone pour valider l'ajout
                    </p>
-
                </article>
-           </div>
-       </form>
+         </div>
     </div>
     <div class="modal-footer">
-        <button class="btn hide " data-dismiss="modal" aria-hidden="true">Close</button>
-        <button class="btn btn-primary">Suivant</button>
-        <button class="btn btn-primary">Précédent</button>
-
+        <button id="nextModal" class="btn btModal" onclick="TIMER.clickOnNext()">Suivant</button>
+        <button id="precModal" class="btn hide btModal" onclick="TIMER.clickOnPrec()">Précédent</button>
+        <button id="valModal" class="btn btn-primary hide btModal" onclick="TIMER.validateSuppr()">Valider</button>
     </div>
 </div>
 <div class="modal hide" id="erreurModal">
@@ -126,10 +139,10 @@
     ["apps/news", "apps/timer"])
     // when they are loaded
     .then(function(News, Timer) {
-    console.log("init News");
-    News.init();
+        console.log("init News");
+        News.init();
         TIMER = Timer;
-    Timer.init();
+        Timer.init();
     });
 </script>
 

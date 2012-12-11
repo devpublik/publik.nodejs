@@ -11,70 +11,87 @@ import models.PostIt
 import scala.Predef._
 import scala.Some
 
+/**
+ * Main Page.
+ *
+ * This page contains the postit view.
+ */
+object Application extends Controller {
 
-object Application extends Controller  {
+  /**
+   * Class of the List of postits.
+   */
+  case class PostIts (name: String, list: Seq[PostIt])
 
-  case class PostIts(name:String, list:Seq[PostIt])
-
-  val PostItForm  = Form(
-    mapping (
-      "id" ->   optional( longNumber),
+  /**
+   * A form of PostIt.
+   */
+  val PostItForm = Form(
+    mapping(
+      "id" -> optional(longNumber),
       "title" -> nonEmptyText,
-      "typeP" ->   nonEmptyText,
+      "typeP" -> nonEmptyText,
       "contains" -> nonEmptyText,
       "active" -> optional(of[Boolean]),
-      "date" ->  optional( longNumber)
-    ) (PostIt.apply)(PostIt.unapply)
+      "date" -> optional(longNumber)
+    )(PostIt.apply)(PostIt.unapply)
   )
 
- /* val PostItsForm = Form (
-     mapping (
-       "name" ->  nonEmptyText,
-      "postits" -> seq(PostItForm.mapping)
+  /**
+   * The main index Menu.
+   */
+  val menuIndex = postit.toString
 
-     ) (PostIts.apply)(PostIts.unapply)
-  ) */
-
-
-  val menuIndex =  postit.toString
-
-  def createList() : List[PostIt] = {
-    val postitDataList  = PostIt.findAll()
-    postitDataList.toList.filter{
+  /**
+   * Create the default List of PostIt.
+   */
+  def createList (): List[PostIt] = {
+    val postitDataList = PostIt.findAll()
+    postitDataList.toList.filter {
       (data: PostIt) => data.active
-    }.sortWith{(s, t) =>
-      s.date > t.date
+    }.sortWith {
+      (s, t) =>
+        s.date > t.date
     }
   }
 
+  /**
+   * the main Url.
+   */
   def index = Action {
-    Ok(views.html.index(createList(),menuIndex))
+    Ok(views.html.index(createList(), menuIndex))
   }
 
-  def delete(id:Long) = Action {
-     val tmp = PostIt.load(id)
-     tmp match {
-       case Some(result) =>
-         result.active = false
-         PostIt.update(result)
-         Redirect("/")
-       case None => BadRequest
-     }
+  /**
+  Delete  a postit.
+    */
+  def delete (id: Long) = Action {
+    val tmp = PostIt.load(id)
+    tmp match {
+      case Some(result) =>
+        result.active = false
+        PostIt.update(result)
+        Redirect("/")
+      case None => BadRequest
+    }
   }
 
-  def add = Action{
+  /**
+   * Add a postit.
+   */
+  def add = Action {
     implicit request =>
       PostItForm.bindFromRequest.fold(
-      errors => {
-        play.Logger.error("error "+errors)
-        BadRequest
-      },
-      success => {
+        errors => {
+          play.Logger.error("error " + errors)
+          BadRequest
+        },
+        success => {
 
-        play.Logger.debug("success:"+success)
-        PostIt.create(Option(success))
-        Redirect(routes.Application.index)
-      }
+          play.Logger.debug("success:" + success)
+          PostIt.create(Option(success))
+          Redirect(routes.Application.index)
+        }
       )
 
   }

@@ -10,10 +10,11 @@ GET     /services/postit/del/:id    controllers.Application.delete(id:Long)
 # Ged
 GET     /ged/                       controllers.Documents.index
 # Timer
-GET     /timer/                     controllers.Timer.index
-POST     /timer/popup               controllers.Timer.popup
-GET     /timer/sound/:id               controllers.Timer.soundFile(id:Option[Long])
-
+GET     /timer/                  controllers.Timer.index
+POST    /timer/popup             controllers.Timer.popup
+GET     /timer/sound/:id         controllers.Timer.soundFile(id:Option[Long])
+POST    /timer/add               controllers.Timer.add
+POST    /timer/del               controllers.Timer.del
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

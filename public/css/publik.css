@@ -21,6 +21,8 @@
 .searchGed {
     width: 25px;
 }
+#holder { border: 5px dashed #cccccc; width: 200px; height: 200px; margin: 20px auto;}
+#holder.hover { border: 5px dashed #333333; }
 
 /************************************/
 /* Postit */
