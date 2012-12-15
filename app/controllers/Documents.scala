@@ -9,11 +9,11 @@ import models.ApplicationPage._
  * Date: 06/12/12
  * Time: 22:20
  */
-object Ged extends Controller {
+object Documents extends Controller {
 
   val menuIndex =  ged.toString
 
-  def index = Action {
+  def index(path:Option[String]) = Action {
     Ok(views.html.ged(menuIndex))
   }
 }
