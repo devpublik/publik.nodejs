@@ -23,14 +23,14 @@ abstract class CrudRedis {
 
   /**
    * convert T to Map.
-   * @param value
+   * @param value the object to convert.
    * @return
    */
   def toMap (value: T): Map[String, String]
 
   /**
    * convert Map to T .
-   * @param values
+   * @param values the map to convert.
    * @return
    */
   def toType (values: Map[String, String]): T
@@ -43,7 +43,7 @@ abstract class CrudRedis {
   def load (id: Long): Option[T] = {
     Redis.getSedisClient {
       client =>
-        var tmp = client.hgetAll(key + ":" + id)
+        val tmp = client.hgetAll(key + ":" + id)
         Option(toType(tmp))
     }
   }

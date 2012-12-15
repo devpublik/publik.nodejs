@@ -17,41 +17,44 @@ import xml.{NodeSeq, Elem}
 object News extends Controller {
   /**
    * Transform the result to the Json value.
-   * @param elem
+   * @param elem xml datas.
    * @return
    */
-  def parseXml (elem:Elem) :JsValue  = {
-    var item = elem \\"item"
-    val convert : PartialFunction[NodeSeq, JsValue] ={
-      case x => Json.toJson( Map("item" ->  Json.toJson(
+  def parseXml (elem: Elem): JsValue = {
+    val item = elem \\ "item"
+    val convert: PartialFunction[NodeSeq, JsValue] = {
+      case x => Json.toJson(Map("item" -> Json.toJson(
         Map(
-          "title" -> Json.toJson((x \"title").text),
-          "url" -> Json.toJson((x \"link").text)
+          "title" -> Json.toJson((x \ "title").text),
+          "url" -> Json.toJson((x \ "link").text)
         ))
-      )  )
+      ))
     }
-    var array =item.map(convert)
-    JsArray( array);
+    val array = item.map(convert)
+    JsArray(array)
   }
 
   /**
    * Web service which load the news.
    * @return
    */
-  def read = Action { implicit request =>
+  def read = Action {
+    implicit request =>
 
-    val promiseOfString = Akka.future {
-      WS.url("http://news.google.fr/news?pz=1&cf=all&ned=fr&hl=fr&output=rss").get().map { response =>
-        response.xml
+      val promiseOfString = Akka.future {
+        WS.url("http://news.google.fr/news?pz=1&cf=all&ned=fr&hl=fr&output=rss").get().map {
+          response =>
+            response.xml
+        }
       }
-    }
-    Async {
-      promiseOfString.orTimeout("Oops", 5000).map { eitherStringOrTimeout =>
-        eitherStringOrTimeout.fold(
-          content => Ok( parseXml( content.value.get)),
-          timeout => InternalServerError("Timeout Exceeded!")
-        )
+      Async {
+        promiseOfString.orTimeout("Oops", 5000).map {
+          eitherStringOrTimeout =>
+            eitherStringOrTimeout.fold(
+              content => Ok(parseXml(content.value.get)),
+              timeout => InternalServerError("Timeout Exceeded!")
+            )
+        }
       }
-    }
   }
 }

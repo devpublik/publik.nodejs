@@ -3,6 +3,7 @@ package models
 
 import org.specs2.mutable.Specification
 import library.Redis
+
 /**
  * SoundTimerSpec.
  * User: skarb
@@ -13,8 +14,8 @@ class SoundTimerSpec extends Specification {
 
   "a sound timer " should {
     "be uploaded" in {
-      Redis.connectTo("localhost",6379,Option(null))
-      SoundTimer.create(SoundTimer(Option(0L),"name","1.mp3"))
+      Redis.connectTo("localhost", 6379, Option(null))
+      SoundTimer.create(SoundTimer(Option(0L), "name", "1.mp3"))
 
     }
   }

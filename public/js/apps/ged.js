@@ -1,7 +1,7 @@
 /**
  * module to manage GED.
  **/
-define(["common/utils", "text!templates/ged/anchor.html", "text!templates/ged/template_subdir.html", "text!templates/ged/template_files.html"], function(Utils, AnchorTemplate, SubdirTemplate, FilesTemplate) {
+define(["common/utils"/*, "text!templates/ged/anchor.html", "text!templates/ged/template_subdir.html", "text!templates/ged/template_files.html"*/], function(Utils/*, AnchorTemplate, SubdirTemplate, FilesTemplate*/) {
 
     var sens;
     /**
@@ -11,9 +11,9 @@ define(["common/utils", "text!templates/ged/anchor.html", "text!templates/ged/te
             $("#loadModal").modal();
         },
 
-        hideLoadModal = function() {
+       /* hideLoadModal = function() {
             $("#loadModal").modal("hide");
-        },
+        },  */
         innerSorts = function(but) {
             var type = $("#sortType option:selected").val();
             if (but) {
@@ -22,7 +22,7 @@ define(["common/utils", "text!templates/ged/anchor.html", "text!templates/ged/te
                 sens = $("#sortSens .active").attr("id");
             }
             if (type == "date") {
-                $("#currentdirectory").children().sortElements(sortByName);
+                $("#currentdirectory").children().sortElements(sortByDate);
 
             } else if (type == "name") {
                 $("#currentdirectory").children().sortElements(function(a, b) {
@@ -44,7 +44,7 @@ define(["common/utils", "text!templates/ged/anchor.html", "text!templates/ged/te
             }
 
         },
-        sortByName = function(a, b) {
+        sortByDate = function(a, b) {
             if (sens == "Asc") return $(a).attr("data-date-modif") > $(b).attr("data-date-modif") ? 1 : -1;
             return $(a).attr("data-date-modif") < $(b).attr("data-date-modif") ? 1 : -1;
 
@@ -55,8 +55,9 @@ define(["common/utils", "text!templates/ged/anchor.html", "text!templates/ged/te
             var file = evt.dataTransfer.files[0];
             if (formUploadFile) {
                 formUploadFile.append("upload", file);
+                formUploadFile.append("parent", $("#parent").val());
                 $.ajax({
-                    url: "/services?action=documents.put&type=file&path=" + $("#pathdir").val(),
+                    url: "/ged/add/document" ,
                     type: "POST",
                     data: formUploadFile,
                     processData: false,
@@ -81,25 +82,7 @@ define(["common/utils", "text!templates/ged/anchor.html", "text!templates/ged/te
      * Objet to manage.
      **/
     return {
-        /**
-         * common directory.
-         **/
-        ROOT: "/",
-        /**
-         * To up in the hierarchy directory.
-         **/
-        toUp: function() {
-            var actualPath = $("#pathdir").val(),
-                li;
-            if (actualPath == "") return;
-
-            li = actualPath.lastIndexOf("/");
-            if (li == -1) {
-                document.location = ROOT;
-
-            } else document.location = ROOT + actualPath.substring(0, li);
-        },
-        /**
+         /**
          * call the create directory method.
          **/
         createDir: function() {
@@ -109,17 +92,12 @@ define(["common/utils", "text!templates/ged/anchor.html", "text!templates/ged/te
             if (newdir && $.trim(newdir) != "") {
                 // création du répertoire
                 $("#dirName_control_group").removeClass("error");
-                pathAbsolute = $("#pathdir").val() + "/" + $.trim(newdir);
-                $.get("/services", {
-                    action: "documents.put",
-                    "type": "directory",
-                    "path": pathAbsolute
-                }, function() {
-                    $("#addDirectoryModal").modal('hide');
-                    document.location.reload();
-                });
 
 
+
+                 $("#addDirectoryModal").modal('hide');
+                 showLoadModal();
+                 $("#formAddDirectory").submit();
             } else {
 
                 // gestion erreur
@@ -173,16 +151,9 @@ define(["common/utils", "text!templates/ged/anchor.html", "text!templates/ged/te
                 $("#adress_control_group").removeClass("error");
             }
 
-            $.get("/services", {
-                action: "documents.put",
-                "type": "url",
-                "path": $("#pathdir").val(),
-                "name": name,
-                "adress": adress
-            }, function() {
-                $("#addURLModal").modal('hide');
-                document.location.reload();
-            });
+            $("#addURLModal").modal('hide');
+            showLoadModal();
+            $("#formAddLink").submit();
 
             return false;
         },
@@ -231,90 +202,7 @@ define(["common/utils", "text!templates/ged/anchor.html", "text!templates/ged/te
          * initialize the page.
          **/
         init: function() {
-            var formUploadFile, filtersTypeahead = "[";
-
-            ROOT = "index.html?path=";
-
-
-
-            var path = Utils.getUrlVar("path"),
-                oldPath = "",
-                anchorRoot = $(".breadcrumb");
-            showLoadModal();
-            if (!path) {
-                path = "";
-            }
-
-            if (path != "") {
-                // mise à jour de l'ancre'
-                var currentTagTokens = path.split("/");;
-                for (var i = 0; i < currentTagTokens.length; i++) {
-                    if (oldPath.length > 0) {
-                        oldPath = oldPath + "/";
-                    }
-                    oldPath = oldPath + currentTagTokens[i];
-
-                    anchorRoot.append(Utils.tmpl(AnchorTemplate, {
-                        "urlA": oldPath,
-                        "urlB": currentTagTokens[i]
-                    }));
-                }
-
-
-            }
-            anchorRoot.children("li:last").addClass("active");
-            // création de la liste des fichiers
-            $("#pathdir").val(path);
-            $("#currentdirectory").empty();
-            if (path != "") {
-                $("#currentdirectory").append(Utils.tmpl(SubdirTemplate, "{\"d\":\"s\"}"));
-            }
-
-            $.getJSON("/services", {
-                action: "documents.read",
-                "path": path
-            }, function(resultat) {
-                // if no files
-                if (resultat.length == 0) {
-                    hideLoadModal();
-                } else {
-                    // for each files.
-                    $.each(resultat, function(key) {
-                        var tmhref = "/services?action=documents.read&path=" + this.path,
-                            filterData;
-                        if (this.type == "directory") {
-                            tmhref = ROOT + this.path;
-                        }
-
-                        if (filtersTypeahead.length > 1) filtersTypeahead += ",";
-
-
-                        if (this.type == "url") {
-                            filterData = this.path.replace(path + "/", "").replace("/", "").replace(".url", "");
-                            filtersTypeahead += '"' + filterData + '"';
-                        } else {
-                            filterData = this.path.replace(path + "/", "").replace("/", "");
-                            filtersTypeahead += '"' + filterData + '"';
-                        }
-
-
-                        var tmpHTML = Utils.tmpl(FilesTemplate, {
-                            data: {
-                                type: this.type,
-                                path: this.path.replace(path + "/", ""),
-                                datemdf: this.dmodif
-                            },
-                            hreaf: tmhref,
-                            filter: filterData
-                        });
-                        $("#currentdirectory").append(tmpHTML);
-                        $("#filterOnName").attr("data-source", filtersTypeahead + "]");
-
-                        innerSorts();
-                        hideLoadModal();
-                    });
-                }
-            });
+            $(".breadcrumb").children("li:last").addClass("active");
 
             $("#holder")[0].ondrop = function(evt) {
                 innerdropUploadFile(evt);

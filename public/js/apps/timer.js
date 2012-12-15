@@ -202,10 +202,7 @@ define(["lib/common/utils", "ui/default"], function(Utils) {
             defaultheight = boutonArreter.css("height");
             defaultWidth = boutonArreter.css("width");
 
-
             // init select audio
-
-
             $("#soundSelect").change(function() {
                 changeSound();
             });

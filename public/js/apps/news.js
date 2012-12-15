@@ -12,9 +12,7 @@ define(["common/utils"], function(Utils) {
     return {
         init: function() {
             console.log("loading news");
-           // $("body").append("<div id=\"templates\" ></div>");
-            // management of the left menu.
-           // $("#menu").html(Menu).css("height", "800px").css("display", "inline");
+
             // display the news
             $.get("/services/news", {
                 action: true
@@ -87,14 +85,7 @@ define(["common/utils"], function(Utils) {
                     });
                 }
             });
-            // menu management
-            $("#gedRefresh").click(function(evt) {
-                $.get("/services", {
-                    action: "documents.update.all"
-                }, function(html) {
-                    document.location.reload();
-                });
-            });
+
         }
     }
 });

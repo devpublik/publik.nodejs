@@ -9,21 +9,20 @@ package models
  */
 
 
-
-object PostItType extends Enumeration( "label-success","label-warning","label-info","label-important") {
+object PostItType extends Enumeration("label-success", "label-warning", "label-info", "label-important") {
   type PostItType = Value
   val Success,
   Warning,
   Info,
   Important = Value
 
-  def parse(value:String):PostItType={
+  def parse (value: String): PostItType = {
 
-    for (i <-values)
-      if (value == i.toString){
+    for (i <- values)
+      if (value == i.toString) {
         return i
       }
 
-    sys.error("value not found : "+value)
+    sys.error("value not found : " + value)
   }
 }

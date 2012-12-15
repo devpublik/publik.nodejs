@@ -4,6 +4,7 @@ import play.api.mvc._
 import models.ApplicationPage._
 import models.SoundTimer
 import play.api.libs.json.{JsArray, JsValue, Json}
+import play.api.Play
 
 /**
  * Timer Controller.
@@ -63,7 +64,9 @@ object Timer extends Controller {
     id match {
       case Some(v) =>
         SoundTimer.load(v) match {
-          case Some(value) => Ok.sendFile(new java.io.File("soundFiles/" + value.fileName))
+          case Some(value) =>
+            val directoryToStore = Play.current.configuration.getString("sound.timer.directory").getOrElse("s")
+            Ok.sendFile(new java.io.File(directoryToStore+"/" + value.fileName))
           case None => BadRequest
         }
 
@@ -92,7 +95,8 @@ object Timer extends Controller {
             case Some(values) =>
               val name = values(0)
               if (contentType.get == "audio/mp3") {
-                picture.ref.moveTo(new File("soundFiles/" + filename))
+                val directoryToStore = Play.current.configuration.getString("sound.timer.directory").getOrElse("s")
+                picture.ref.moveTo(new File(directoryToStore+"/" + filename))
                 SoundTimer.create(SoundTimer(Option(0L), name, filename))
                 Ok(Json.toJson(Map("result" -> true)))
               } else {

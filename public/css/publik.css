@@ -18,6 +18,14 @@
     left: 50px;
 }
 
+
+.explorer td {
+  text-align: center;
+}
+
+.icone-liste {
+  width: 75px;
+}
 .searchGed {
     width: 25px;
 }

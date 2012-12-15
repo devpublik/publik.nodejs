@@ -3,7 +3,7 @@ package models
 import org.specs2.mutable.Specification
 
 /**
- * Created with IntelliJ IDEA.
+ * Test of the postit datas.
  * User: skarb
  * Date: 03/12/12
  * Time: 22:52
@@ -13,7 +13,7 @@ class PostitTypeSpec extends Specification {
 
   "A String which represents a PostItType" should {
     "be converted" in {
-      PostItType.parse( PostItType.Important.toString ) mustEqual PostItType.Important
+      PostItType.parse(PostItType.Important.toString) mustEqual PostItType.Important
     }
   }
 

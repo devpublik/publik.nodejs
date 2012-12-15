@@ -11,12 +11,12 @@ package library
 import org.sedis.Pool
 import redis.clients.jedis.{JedisPoolConfig, JedisPool}
 import play.api.Application
-import redis.clients.jedis.exceptions.JedisConnectionException
+
 import scala.Predef._
 import scala.Left
 import scala.Right
 import scala.Some
-import library.RedisSession
+
 
 /**
  * TODO definition
@@ -39,7 +39,7 @@ object Redis {
     val port = app.configuration.getInt("redis.port").getOrElse(6379)
     val auth = app.configuration.getString("redis.auth")
     play.Logger.info("connect to Redis")
-    Redis.connectTo(hostname, port, auth);
+    Redis.connectTo(hostname, port, auth)
   }
 
 
@@ -69,7 +69,7 @@ object Redis {
     toReturn
   }
 
-  def disconnect() = {
+  def disconnect()  {
     if (_pool != null) {
       // Send a disconnect to the server
       try{

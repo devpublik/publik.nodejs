@@ -3,12 +3,20 @@
 # ~~~~
 # WS REST
 GET     /services/news              controllers.News.read
+
 # Post-It
 GET     /                           controllers.Application.index
-POST     /services/postit/add       controllers.Application.add
+POST    /services/postit/add       controllers.Application.add
 GET     /services/postit/del/:id    controllers.Application.delete(id:Long)
+
 # Ged
 GET     /ged/                       controllers.Documents.index
+GET     /ged/update                 controllers.Documents.update
+GET     /ged/:path                  controllers.Documents.change(path:Option[Long])
+POST    /ged/add/link               controllers.Documents.addLink
+POST    /ged/add/directory          controllers.Documents.addDirectory
+POST    /ged/add/document           controllers.Documents.addDocument
+
 # Timer
 GET     /timer/                  controllers.Timer.index
 POST    /timer/popup             controllers.Timer.popup

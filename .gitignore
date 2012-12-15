@@ -1,4 +1,8 @@
 logs
+documents
+soundFiles
+appendonly.aof
+dump.rdb
 project/project
 project/target
 target

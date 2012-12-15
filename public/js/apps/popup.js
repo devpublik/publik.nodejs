@@ -30,7 +30,8 @@ define(["common/utils","ui/countdown","domReady!"], function(Utils,Countdown) {
 
                 var divSOund = $("#sound");
 
-                divSOund.html("<div><a class='boutonfermer' class='' href=''#' onclick='window.close();'>Fermer</a></div><div><AUDIO controls autoplay loop><source src='"+sound+
+                divSOund.html("<div><a class='boutonfermer' class='' href=''#' onclick='window.close();'>Fermer</a></div><div><AUDIO controls autoplay loop><source src='"
+                +sound+
                 "' ></source> </AUDIO></div>");
                 divSOund.show();
 
@@ -38,11 +39,6 @@ define(["common/utils","ui/countdown","domReady!"], function(Utils,Countdown) {
 
         }
 
-
-
-/*$(document).ready(
-
-function() {*/
     return {
         init: function(pheure,pminute,psound) {
             heure = pheure;

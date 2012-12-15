@@ -7,9 +7,9 @@ package models
  * Time: 21:17
  * To change this template use File | Settings | File Templates.
  */
-object SortingGed extends Enumeration{
+object SortingGed extends Enumeration {
   type SortingGed = Value
-  val NameAsc,NameDesc,DateAsc,DateDesc,TypeAsc,TypeDesc = Value
+  val NameAsc, NameDesc, DateAsc, DateDesc, TypeAsc, TypeDesc = Value
 
 
 }
