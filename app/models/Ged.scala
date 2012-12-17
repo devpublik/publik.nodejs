@@ -97,8 +97,12 @@ object Ged extends CrudRedis {
     true
   }
 
+  def findByName(part:String ) : Seq[Ged] = {
+    super.findAll().filter( p => p.name.toLowerCase.contains(part.toLowerCase))
+  }
+
   def findByAbsolutePath (path: String): Option[Ged] = {
-    val liste = super.findAll
+    val liste = super.findAll()
     val result = liste.filter(p => p.absolutePath == path)
     if (result.size == 0) {
       Option(null)

@@ -16,6 +16,7 @@ GET     /ged/:path                  controllers.Documents.change(path:Option[Lon
 POST    /ged/add/link               controllers.Documents.addLink
 POST    /ged/add/directory          controllers.Documents.addDirectory
 POST    /ged/add/document           controllers.Documents.addDocument
+GET     /ged/typeahead/:part              controllers.Documents.getTypeAhead(part:String)
 
 # Timer
 GET     /timer/                  controllers.Timer.index

@@ -1,6 +1,8 @@
 // définition of News reader module.,'domReady!'
 define(["common/utils"], function(Utils) {
 
+    var allSearchDocument = [];
+
     var treatNews = function(item, place) {
             var title = item.title;
                   if (title.length > 60) {
@@ -17,8 +19,6 @@ define(["common/utils"], function(Utils) {
             $.get("/services/news", {
                 action: true
             }, function(jsonResult) {
-                //console.log(html);
-
 
                 if (jsonResult.length > 0) {
                     treatNews(jsonResult[0].item, "#newsFeed");
@@ -31,15 +31,12 @@ define(["common/utils"], function(Utils) {
             $("#searchGed").typeahead({
                 source: function(typeahead, query) {
                     $.ajax({
-                        url: "/services",
+                        url: "/ged/typeahead/"+$("#searchGed").val(),
                         type: "get",
-                        data: {
-                            action: "documents.search",
-                            search: typeahead
-                        },
                         dataType: "JSON",
                         async: false,
                         success: function(results) {
+                            allSearchDocument = results
                             var return_list = [],
                                 i = results.length;
                             while (i--) {
@@ -54,35 +51,18 @@ define(["common/utils"], function(Utils) {
                 var key = evt.keyCode || evt.which;
                 if (key == 13) {
                     var valueOfSearch = $(this).val();
-                    $.ajax({
-                        url: "/services",
-                        type: "get",
-                        data: {
-                            action: "documents.search",
-                            search: valueOfSearch,
-                            by: "name"
-                        },
-                        dataType: "JSON",
-                        async: false,
-                        success: function(result) {
-                            var adress;
-                            console.log(result)
-                            if (result.resultat == true) {
-                                adress = result.relativePath;
-                                if (result.type == "directory") {
-                                    $("#formSearchGed").attr("action", "/ged/index.html");
-                                }
-                                $("#formPathGed").attr("value", adress);
-                                $("#formSearchGed").submit();
-                            } else {
-                                alert("Document non trouvé");
-                            }
-                        },
-                        error: function(result) {
 
-                            console.log(result)
+                    for(var i = 0 ;i<allSearchDocument.length ;i++){
+                        var x = allSearchDocument[i];
+                        if(x.name == valueOfSearch){
+                            $("#formSearchGed").attr("action","/ged/"+x.id);
+                            $("#formSearchGed").submit();
+                            return false;
                         }
-                    });
+                    }
+
+
+                    return false;
                 }
             });
 
