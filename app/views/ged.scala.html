@@ -52,16 +52,17 @@
             </li>
         </ul>
     </div>
-    <div class=" span9 filtrer-element hide" style="margin-top:15px;">
+    <div class="row" >
+    <div class=" span2 filtrer-element hide" style="margin-top:15px;">
         <b>
             Filtrer par :
         </b>
     </div>
-    <div class=" span9 filtrer-element hide" style="margin-top:15px;">&nbsp;</div>
-    <div class=" span1 filtrer-element hide" >
+
+    <div class=" span1 filtrer-element hide" style="margin-top:15px;">
         <b>- type :</b>
     </div>
-    <div class=" span3 filtrer-element hide">
+    <div class=" span7 filtrer-element hide" style="margin-top:15px;">
         <select id="filter" onchange="GED.filtrer(this);">
             <option value="" selected="selected">
                 Aucun
@@ -74,6 +75,9 @@
             </option>
         </select>
     </div>
+        <div class=" span2 filtrer-element hide" >
+            &nbsp;
+        </div>
     <div class=" span1 filtrer-element hide">
         <b>
             - nom :
@@ -83,6 +87,8 @@
         <input type="text" id="filterOnName" class="span4 " data-provide="typeahead"
                data-source="" onkeypress="GED.handleKeyPress(event,this)" placeholder="taper le nom ...">
     </div>
+    </div>
+    <div class="row" >
     <div class=" span1 sort-element hide" style="margin-top:15px;">
         <b>
             Trier par :
@@ -110,6 +116,7 @@
             Descendant
         </button>
     </div>
+        </div>
 </div>
 <div class="container">
     <div class="span2">

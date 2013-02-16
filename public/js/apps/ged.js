@@ -10,6 +10,11 @@ define(["common/utils"/*, "text!templates/ged/anchor.html", "text!templates/ged/
     var showLoadModal = function() {
             $("#loadModal").modal();
         },
+        sortByName = function(a, b) {
+                    if (sens == "Asc") return $(a).attr("data-filter") > $(b).attr("data-filter") ? 1 : -1;
+                    return $(a).attr("data-filter") < $(b).attr("data-filter") ? 1 : -1;
+
+        },
 
        /* hideLoadModal = function() {
             $("#loadModal").modal("hide");
@@ -25,11 +30,7 @@ define(["common/utils"/*, "text!templates/ged/anchor.html", "text!templates/ged/
                 $("#currentdirectory").children().sortElements(sortByDate);
 
             } else if (type == "name") {
-                $("#currentdirectory").children().sortElements(function(a, b) {
-                    if (sens == "Asc") return $(a).attr("data-filter") > $(b).attr("data-filter") ? 1 : -1;
-                    return $(a).attr("data-filter") < $(b).attr("data-filter") ? 1 : -1;
-
-                });
+                $("#currentdirectory").children().sortElements(sortByName);
 
             } else if (type == "type") {
                 $("#currentdirectory").children().sortElements(function(a, b) {
@@ -76,7 +77,7 @@ define(["common/utils"/*, "text!templates/ged/anchor.html", "text!templates/ged/
         },
         isShowName = function(objet) {
             var valueSelected = $("#filterOnName").val();
-            return valueSelected == "" || valueSelected == objet.attr("data-filter")
+            return valueSelected == "" ||  (objet.attr("data-filter").toLowerCase().indexOf(valueSelected.toLowerCase())!=-1);
         };
     /**
      * Objet to manage.
@@ -187,6 +188,8 @@ define(["common/utils"/*, "text!templates/ged/anchor.html", "text!templates/ged/
                     objet.hide();
                 }
             });
+
+
         },
 
         handleKeyPress: function(e, elt) {
