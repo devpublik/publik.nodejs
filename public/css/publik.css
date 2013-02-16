@@ -2,7 +2,8 @@
     -webkit-border-radius: 4px;
     border-radius: 4px;
     background-color: #F7F7F9;
-    border: 1px solid #E1E1E8;}
+    border: 1px solid #E1E1E8;
+}
 
 .context-menu-publik {
     position: absolute;
@@ -11,55 +12,107 @@
     z-index: 20000;
 }
 
-
 #buttons-pad {
     position: fixed;
     top: 250px;
     left: 50px;
 }
 
-
 .explorer td {
-  text-align: center;
+    text-align: center;
 }
 
 .icone-liste {
-  width: 75px;
+    width: 75px;
 }
+
 .searchGed {
     width: 25px;
 }
-#holder { border: 5px dashed #cccccc; width: 200px; height: 200px; margin: 20px auto;}
-#holder.hover { border: 5px dashed #333333; }
+
+#holder {
+    border: 5px dashed #cccccc;
+    width: 200px;
+    height: 200px;
+    margin: 20px auto;
+}
+
+#holder.hover {
+    border: 5px dashed #333333;
+}
 
 /************************************/
 /* Postit */
 /************************************/
 
-.postit-publik {
+/*.postit-publik {
     background-image: url("../img/postit.png");
     background-repeat: no-repeat;
     width: 232px;
     height: 230px;
     display: inline-block;
-   /* z-index: 8000;*/
+   
+}*/
+.postit-publik {
+    display: inline-block;
+    margin: 0px auto;
+    width: 232px;
+    height: 230px;
+    background: rgba(253,253,67,0.8);
+    background-image: -webkit-linear-gradient(top, #FDFD43, #ADAD19);
+    background-image: -moz-linear-gradient(top, #FDFD43, #ADAD19);
+    background-image: -ms-linear-gradient(top, #FDFD43, #ADAD19);
+    background-image: -o-linear-gradient(top, #FDFD43    , #ADAD19);
+    -webkit-border-radius: 10px;
+    -webkit-border-bottom-right-radius: 50px;
+    -moz-border-radius: 10px;
+    -moz-border-radius-bottomright: 50px;
+    border-radius: 10px;
+    border-bottom-right-radius: 50px;
+    -moz-box-shadow: 10px 10px 5px #888;
+    -webkit-box-shadow: 10px 10px 5px #888;
+    box-shadow: 10px 10px 5px #888;
+    position: relative;
+    z-index: 90;
 }
 
+.postit-corner {
+  font: bold 15px Sans-Serif;
+  color: #333;
+  text-align: center;
+  text-shadow: rgba(255,255,255,0.5) 0px 1px 0px;
+  position: absolute;
+  padding: 25px 0;
+  right: 0px;
+  bottom: 0px;
+  width: 42px;
+  background-color: transparent; 
+  -webkit-border-top-left-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  border-top-left-radius: 5px;
+  -webkit-box-shadow: -1px -1px 0   1px rgba(0,0,0,0.3), 0  -1px -1px  0 rgba(0,0,0,0.1);
+  -moz-box-shadow: -1px -1px 0   1px rgba(0,0,0,0.3), 0  -1px -1px  0 rgba(0,0,0,0.1);
+  box-shadow: -1px -1px 0   1px rgba(0,0,0,0.3), 0  -1px -1px  0 rgba(0,0,0,0.1);
+}
+
+
 .postit-header-publik {
-	padding: 8px;
+    padding: 8px;
     position: relative;
     top: 0px;
     left: 0px;
     text-align: center;
-    width:  232px;
+    width: 232px;
 }
 
-.postit-content-publik{
- 	position: relative;
+.postit-content-publik {
+    overflow:auto;
+    position: relative;
     text-align: justify;
- 	padding: 8px;
+    padding: 8px;
     left: 0px;
-    /*width:   230px;
-    max-width:  230px;*/
-    height: 204px;
+    height: 185px;
+    padding: 5px;
+    white-space: wrap;
 }
+

@@ -12,9 +12,7 @@
                @data.title
             </a>
         </div>
-        <div class="postit-content-publik">
-            @data.contains
-        </div>
+        <div class="postit-content-publik">@Html(data.contains)<div class="postit-corner"></div></div>
     </div>
     }
 </div>
@@ -73,7 +71,7 @@
                                     <i class="icon-info-sign">
                                     </i>
                                 </button>
-                                <button class="btn type-postit"  data-type-title-value="label-important " onclick="return false;">
+                                <button class="btn type-postit"  data-type-title-value="label-important" onclick="return false;">
                                     <i class="icon-ok-circle">
                                     </i>
                                 </button>
