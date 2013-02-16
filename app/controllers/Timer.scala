@@ -60,19 +60,16 @@ object Timer extends Controller {
    * @param id
    * @return
    */
-  def soundFile (id: Option[Long]) = Action {
-    id match {
-      case Some(v) =>
-        SoundTimer.load(v) match {
+  def soundFile (id: Long) = Action {
+
+        SoundTimer.load(id) match {
           case Some(value) =>
             val directoryToStore = Play.current.configuration.getString("sound.timer.directory").getOrElse("s")
             Ok.sendFile(new java.io.File(directoryToStore+"/" + value.fileName))
           case None => BadRequest
         }
 
-      case None =>
-        NotFound
-    }
+
 
   }
 
@@ -123,7 +120,7 @@ object Timer extends Controller {
       request.body.asFormUrlEncoded match {
         case Some(values) =>
 
-          Ok(views.html.timerpopup(values("hour")(0), values("minute")(0), values("sound")(0)))
+          Ok(views.html.timerpopup(values("hour")(0), values("minute")(0), "/timer/sound/"+ values("sound")(0)))
         case None => BadRequest
       }
 

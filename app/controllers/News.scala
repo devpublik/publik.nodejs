@@ -4,9 +4,12 @@ import play.api.mvc.{Action, Controller}
 
 import play.api.libs.json.{JsArray, JsValue, Json}
 import play.api.libs.concurrent.Akka
-import play.api.libs.ws.WS
+import play.api.libs.ws.{Response, WS}
 import play.api.Play.current
 import xml.{NodeSeq, Elem}
+import concurrent.Future
+import play.api.libs.concurrent.Execution.Implicits._
+
 
 /**
  * Web service which call a news web service and convert to JSon.
@@ -39,21 +42,13 @@ object News extends Controller {
    * @return
    */
   def read = Action {
-    implicit request =>
-
-      val promiseOfString = Akka.future {
-        WS.url("http://news.google.fr/news?pz=1&cf=all&ned=fr&hl=fr&output=rss").get().map {
-          response =>
-            response.xml
-        }
-      }
       Async {
-        promiseOfString.orTimeout("Oops", 5000).map {
-          eitherStringOrTimeout =>
-            eitherStringOrTimeout.fold(
-              content => Ok(parseXml(content.value.get)),
-              timeout => InternalServerError("Timeout Exceeded!")
-            )
+
+        val result: Future[Response] =  WS.url("http://news.google.fr/news?pz=1&cf=all&ned=fr&hl=fr&output=rss")
+          .get()  ;
+        result  .map {
+          response =>
+            Ok(parseXml(response.xml ) )
         }
       }
   }

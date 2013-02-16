@@ -30,9 +30,10 @@ define(["common/utils","ui/countdown","domReady!"], function(Utils,Countdown) {
 
                 var divSOund = $("#sound");
 
-                divSOund.html("<div><a class='boutonfermer' class='' href=''#' onclick='window.close();'>Fermer</a></div><div><AUDIO controls autoplay loop><source src='"
+                divSOund.html("<div><a class='boutonfermer' class='' href=''#' onclick='window.close();'>Fermer</a></div><div>"+
+                "<AUDIO controls autoplay loop src='"
                 +sound+
-                "' ></source> </AUDIO></div>");
+                "'></AUDIO></div>");
                 divSOund.show();
 
             }

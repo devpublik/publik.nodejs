@@ -12,7 +12,7 @@ GET     /services/postit/del/:id    controllers.Application.delete(id:Long)
 # Ged
 GET     /ged/                       controllers.Documents.index
 GET     /ged/update                 controllers.Documents.update
-GET     /ged/:path                  controllers.Documents.change(path:Option[Long])
+GET     /ged/:path                  controllers.Documents.change(path:Long)
 POST    /ged/add/link               controllers.Documents.addLink
 POST    /ged/add/directory          controllers.Documents.addDirectory
 POST    /ged/add/document           controllers.Documents.addDocument
@@ -21,7 +21,7 @@ GET     /ged/typeahead/:part              controllers.Documents.getTypeAhead(par
 # Timer
 GET     /timer/                  controllers.Timer.index
 POST    /timer/popup             controllers.Timer.popup
-GET     /timer/sound/:id         controllers.Timer.soundFile(id:Option[Long])
+GET     /timer/sound/:id         controllers.Timer.soundFile(id:Long)
 POST    /timer/add               controllers.Timer.add
 POST    /timer/del               controllers.Timer.del
 

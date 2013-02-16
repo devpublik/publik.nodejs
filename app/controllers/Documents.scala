@@ -26,7 +26,15 @@ object Documents extends Controller {
    * @return
    */
   def index = Action {
-    change(None)
+    val gedType = GedType.Directory
+    val gedDoc = None
+    val idGed = None
+    val values = Ged.search(idGed, SortingGed.NameAsc)
+    val parent = recursiveParent(gedDoc)
+    val parentId = None
+
+    Ok(views.html.ged(menuIndex, parent, values, parentId, idGed))
+
   }
 
 
@@ -54,24 +62,23 @@ object Documents extends Controller {
    * @param idGed
    * @return
    */
-  def change (idGed: Option[Long]) = Action {
+  def change (idGed: Long) = Action {
     var gedType = GedType.Directory
     var gedDoc: Option[Ged] = None
-    if (idGed != None) {
-      gedDoc = Ged.load(idGed.get)
-      gedType = gedDoc.get.typeDoc
-    }
+    gedDoc = Ged.load(idGed)
+    gedType = gedDoc.get.typeDoc
+
 
     gedType match {
       case GedType.Directory =>
-        val values = Ged.search(idGed, SortingGed.NameAsc)
+        val values = Ged.search(Option(idGed), SortingGed.NameAsc)
         val parent = recursiveParent(gedDoc)
         val parentId: Option[Ged] = gedDoc match {
           case Some(p) => p.parent
           case None => None
         }
 
-        Ok(views.html.ged(menuIndex, parent, values, parentId, idGed))
+        Ok(views.html.ged(menuIndex, parent, values, parentId, Option(idGed)))
       case GedType.Document =>
 
         val file = new java.io.File(gedDoc.get.absolutePath)
@@ -108,8 +115,11 @@ object Documents extends Controller {
           play.Logger.debug("addLink")
           val parentid = getParentId(values)
           val name = values.get("name")
-          val url = values.get("url")
-          Ged.createLink(name.get(0), url.get(0), parentid)
+          var url = values.get("url").get(0)
+          if (!url.startsWith("http://")) {
+            url = "http://" + url
+          }
+          Ged.createLink(name.get(0), url, parentid)
           Redirect(routes.Documents.index)
         case None => BadRequest
       }
