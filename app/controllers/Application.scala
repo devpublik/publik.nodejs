@@ -10,6 +10,12 @@ import models.ApplicationPage.postit
 import models.PostIt
 import scala.Predef._
 import scala.Some
+import java.io.File
+import java.io.FileOutputStream
+import org.apache.poi.xssf.usermodel._
+import java.io.ByteArrayOutputStream
+import org.apache.poi.ss.usermodel.IndexedColors
+import org.apache.poi.hssf.usermodel.HSSFCellStyle
 
 /**
  * Main Page.
@@ -93,6 +99,61 @@ object Application extends Controller {
           Redirect(routes.Application.index)
         }
       )
+  }
+
+
+  def generateSpreadSheet = Action {
+    val AllPostit = PostIt.findAll
+    val byteOS = new ByteArrayOutputStream();
+    val wb = new XSSFWorkbook
+    val sheet = wb.createSheet("Extraction")
+    var rNum:Int = 0
+    val style = wb.createCellStyle();
+   // style.setFillBackgroundColor(IndexedColors.AQUA.getIndex());
+    style.setAlignment(org.apache.poi.ss.usermodel.CellStyle.ALIGN_CENTER );
+    style.setFillPattern(org.apache.poi.ss.usermodel.CellStyle.SPARSE_DOTS );
+    style.setBorderBottom(org.apache.poi.ss.usermodel.CellStyle.BORDER_DOUBLE );
+    style.setBorderLeft(org.apache.poi.ss.usermodel.CellStyle.BORDER_DOUBLE );
+    style.setBorderRight(org.apache.poi.ss.usermodel.CellStyle.BORDER_DOUBLE );
+    style.setBorderTop(org.apache.poi.ss.usermodel.CellStyle.BORDER_DOUBLE );
+   // style.setFillPattern(org.apache.poi.ss.usermodel.CellStyle.BIG_SPOTS);
+    val titles =  sheet.createRow(rNum)
+    val row0 =titles.createCell(0)
+    row0.setCellValue("Id.")
+    row0.setCellStyle(style)
+    val row1=titles.createCell(1)
+    row1.setCellValue("Titre")
+    row1.setCellStyle(style)
+    val row2=titles.createCell(2)
+    row2.setCellValue("Contenue")
+    row2.setCellStyle(style)
+    val row3=titles.createCell(3)
+    row3.setCellValue("Supprimer ?")
+    row3.setCellStyle(style)
+    val row4=titles.createCell(4)
+    row4.setCellValue("Date")
+    row4.setCellStyle(style)
+    val row5=titles.createCell(5)
+    row5.setCellValue("Type")
+    row5.setCellStyle(style)
+
+    AllPostit.toList.sortWith(_.date < _.date) .foreach( v =>   {
+      rNum=rNum+1
+      var row = sheet.createRow(rNum)
+      row.createCell(0).setCellValue(v.id.get)
+      row.createCell(1).setCellValue(v.title)
+      row.createCell(2).setCellValue(v.contains)
+      row.createCell(3).setCellValue(v.active)
+      row.createCell(4).setCellValue(v.getFormattedDate)
+      row.createCell(5).setCellValue(v.typeP.toString)
+
+    })
+    /*var cNum = 0
+    val cell = row.createCell(cNum)
+    cell.setCellValue("My Cell Value")   */
+    wb.write(byteOS);
+    byteOS.close
+    Ok(byteOS.toByteArray).as("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
 
   }
 }
