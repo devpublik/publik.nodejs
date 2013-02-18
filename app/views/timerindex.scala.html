@@ -1,13 +1,13 @@
 
-@(name:String,selected:String,pathSound:scala.collection.immutable.List[scala.collection.immutable.Map[String,String]])
+@(name:String,selected:String,pathSound:scala.collection.immutable.List[scala.collection.immutable.Map[String,String]])(implicit lang: Lang)
 @import helper._
 @import helper.twitterBootstrap._
-@main("Publik - Timer", name) {
+@main(Messages("timer.title.welcome"), name) {
 <form class="form-horizontal " id="form-launch" name="form-launch" method="POST" action="@routes.Timer.popup" target="formtarget" onsubmit="return TIMER.calculatePopupSize(this.target)"  >
     <fieldset>
         <div class="control-group" style="vertical-align: top;">
             <label class="control-label" for="heure">
-                Heure :
+                @Messages("timer.field.hour") :
             </label>
             <div class="controls">
                 <input type="number" class="input-mini heigthInputs" id="heure" name="hour" maxlength="2"
@@ -16,19 +16,19 @@
         </div>
         <div class="control-group">
             <label class="control-label" for="minute">
-                Minute :
+                @Messages("timer.field.minute") :
             </label>
             <div class="controls">
                 <input type="number" class="input-mini heigthInputs" id="minute" name="minute" maxlength="2"
                        value="30">
                 <p class="help-block">
-                    Merci de préciser le temps de l'exercice (HH24:MI).
+                    @Messages("timer.field.minute.help.block")
                 </p>
             </div>
         </div>
         <div class="control-group" style="vertical-align:bottom; ;">
             <label class="control-label" for="soundSelect">
-                Sonnerie :
+                @Messages("timer.field.ring") :
             </label>
             <div class="controls">
                 <select id="soundSelect" name="sound">
@@ -52,40 +52,40 @@
         </div>
         <div class="form-actions">
             <button id="launch" type="button" class="btn btn-primary" onclick="TIMER.launchPopup()">
-                Lancer
+                @Messages("timer.button.launch")
             </button>
             <button class="btn hide" type="button" id="stop" onclick="TIMER.closePopup();">
-                Arrêter
+                @Messages("timer.button.stop")
             </button>
         </div>
     </fieldset>
 </form>
 <div id="buttons-pad" style="">
-        <a class="btn btn-danger" type="button" data-toggle="modal" href="#wizard"><i class="icon-bell icon-white"></i> Sons</a>
+        <a class="btn btn-danger" type="button" data-toggle="modal" href="#wizard"><i class="icon-bell icon-white"></i> @Messages("timer.button.sounds")</a>
 
 </div>
 <div id="wizard" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"  >
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="myModalLabel">Sons</h3>
+        <h3 id="myModalLabel">@Messages("timer.button.sounds")</h3>
     </div>
 
     <div class="modal-body">
        <form action="/timer/del" id="delSoundForm" method="POST" >
          <div id="select_control_group" class="control-group divModal">
-            <div class="control-label span2" >Type d'action : </div>
+            <div class="control-label span2" >@Messages("timer.modal.sounds.title") : </div>
             <div class="controls " >
             <div class="btn-toolbar" >
                 <div class="  btn-group " data-toggle="buttons-radio">
-                    <button data-select-choice="add" type="button" class="select-choice btn active" onclick="TIMER.selectModal(event)">Ajouter</button>
-                    <button data-select-choice="del" type="button"  class="select-choice btn" onclick="TIMER.selectModal(event)">Supprimer</button>
+                    <button data-select-choice="add" type="button" class="select-choice btn active" onclick="TIMER.selectModal(event)">@Messages("timer.modal.sounds.button.add")</button>
+                    <button data-select-choice="del" type="button"  class="select-choice btn" onclick="TIMER.selectModal(event)">@Messages("timer.modal.sounds.button.del")</button>
                 </div>
             </div>
            </div>
          </div>
 
          <div id="supp_files_control_group" class="control-group hide divModal">
-             <div class="control-label " >Sélectionner les sons à supprimer : </div>
+             <div class="control-label " >@Messages("timer.modal.sounds.del.title") : </div>
              <div class="controls offset1" >
 
                  @pathSound.map{ k=>
@@ -97,7 +97,7 @@
              </div>
 
 </div> </form> <div id="name_control_group" class="control-group divModal">
-               <div class="control-label span2" >Nom : </div>
+               <div class="control-label span2" >@Messages("timer.modal.sounds.add.field.name") : </div>
                <div class="controls " >
                    <input id="name" type="text" value="" name="name" class="input-medium search-query" >
                </div>
@@ -108,15 +108,15 @@
                         ondragend="this.className = '';return false;">
                    </div>
                    <p style="text-align: center;">
-                       D&eacute;poser un nouveau mp3 dans la zone pour valider l'ajout
+                       @Messages("timer.modal.sounds.add.field.help.block")
                    </p>
                </article>
          </div>
     </div>
     <div class="modal-footer">
-        <button id="nextModal" class="btn btModal" onclick="TIMER.clickOnNext()">Suivant</button>
-        <button id="precModal" class="btn hide btModal" onclick="TIMER.clickOnPrec()">Précédent</button>
-        <button id="valModal" class="btn btn-primary hide btModal" onclick="TIMER.validateSuppr()">Valider</button>
+        <button id="nextModal" class="btn btModal" onclick="TIMER.clickOnNext()">@Messages("timer.modal.button.next")</button>
+        <button id="precModal" class="btn hide btModal" onclick="TIMER.clickOnPrec()">@Messages("timer.modal.button.previous")</button>
+        <button id="valModal" class="btn btn-primary hide btModal" onclick="TIMER.validateSuppr()">@Messages("timer.modal.button.validate")</button>
     </div>
 </div>
 <div class="modal hide" id="erreurModal">
@@ -125,13 +125,13 @@
             ×
         </button>
         <h3>
-            Erreur
+            @Messages("timer.modal.label.error")
         </h3>
     </div>
     <div id="erreurBody" class="modal-body">
     </div>
     <div class="modal-footer">
-        <a href="#" class="btn" data-dismiss="modal">Fermer</a>
+        <a href="#" class="btn" data-dismiss="modal">@Messages("postit.modal.button.close")</a>
     </div>
 </div>
 <script type="text/javascript">

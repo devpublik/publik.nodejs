@@ -29,11 +29,12 @@ define(["common/utils","ui/countdown","domReady!"], function(Utils,Countdown) {
             if (newValue > 360) {
 
                 var divSOund = $("#sound");
-
-                divSOund.html("<div><a class='boutonfermer' class='' href=''#' onclick='window.close();'>Fermer</a></div><div>"+
+/*"<div><a class='boutonfermer' class='' href=''#' onclick='window.close();'>Fermer</a></div><div>"+
                 "<AUDIO controls autoplay loop src='"
                 +sound+
-                "'></AUDIO></div>");
+                "'></AUDIO></div>"*/
+                var content = $("#templateSound").html();
+                divSOund.html(content);
                 divSOund.show();
 
             }

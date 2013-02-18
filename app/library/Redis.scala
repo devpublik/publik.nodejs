@@ -8,7 +8,6 @@
 
 package library
 
-import org.sedis.Pool
 import redis.clients.jedis.{JedisPoolConfig, JedisPool}
 import play.api.Application
 
@@ -16,6 +15,7 @@ import scala.Predef._
 import scala.Left
 import scala.Right
 import scala.Some
+import library.Pool
 
 
 /**
@@ -98,7 +98,7 @@ object Redis {
   }
 
 
-  def getSedisClient[T](body :  scala.Function1[org.sedis.Dress.Wrap, T]) : T ={
+  def getSedisClient[T](body :  scala.Function1[Dress.Wrap, T]) : T ={
     _pool.withClient {
       body
     }

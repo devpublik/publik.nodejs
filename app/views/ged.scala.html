@@ -1,15 +1,15 @@
-@(name:String,path:String,values:scala.collection.immutable.List[Ged],parentId:Option[Ged],currentId:Option[Long])
+@(name:String,path:String,values:scala.collection.immutable.List[Ged],parentId:Option[Ged],currentId:Option[Long])(implicit lang: Lang)
 @import helper._
 @import helper.twitterBootstrap._
 @import models.GedType
-@main("Publik - Documents", name) {
+@main(Messages("ged.title.welcome"), name) {
 <div class="span10">
     <ul class="breadcrumb span8" style="">
         <li>
            @if(path=="/"){
-           <a href="/ged/" class="">RACINE <span class="divider">/</span></a>
+           <a href="/ged/" class="">@Messages("ged.data.root") <span class="divider">/</span></a>
            }else{
-            <a href="/ged/@{if( parentId!=None)parentId.get.id.get.toString else "" }" class="">RACINE <span class="divider">/ </span>@path</a>
+            <a href="/ged/@{if( parentId!=None)parentId.get.id.get.toString else "" }" class="">@Messages("ged.data.root") <span class="divider">/</span>@path</a>
             }
         </li>
     </ul>
@@ -18,60 +18,60 @@
     &nbsp;
     <div class=" span1 ">
         <b>
-            Actions :
+            @Messages("ged.buttons.title") :
         </b>
     </div>
     <div class=" span1 ">
         <button type="button" class="btn" data-toggle="button" data-ged-push="false"
                 onclick="GED.afficherFiltre(this,'.filtrer-element');">
-            Filtrer
+            @Messages("ged.button.filter")
         </button>
     </div>
     <div class=" span1 ">
         <button type="button" class="btn" data-toggle="button" onclick="GED.afficherFiltre(this,'.sort-element');">
-            Trier
+            @Messages("ged.button.sorting")
         </button>
     </div>
     <div class=" span1 ">
         <button type="button" class="btn" onclick="document.location.reload();">
-            Réinitialiser
+            @Messages("ged.button.reload")
         </button>
     </div>
     <div class="btn-group span4 offset1  ">
-        <a class="btn btn-primary" href="#"><i class="icon-plus icon-white"></i> Ajouter</a>
+        <a class="btn btn-primary" href="#"><i class="icon-plus icon-white"></i> @Messages("ged.button.add")</a>
         <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
         <ul class="dropdown-menu" style="text-align: left">
             <li>
-                <a href="javascript:GED.openCreateDir();"><i class="icon-folder-open"></i> Dossier</a>
+                <a href="javascript:GED.openCreateDir();"><i class="icon-folder-open"></i> @Messages("ged.button.add.directory")</a>
             </li>
             <li>
-                <a href="javascript:GED.openUploadFile();"><i class=" icon-plus"></i> Documents</a>
+                <a href="javascript:GED.openUploadFile();"><i class=" icon-plus"></i>  @Messages("ged.button.add.docs")</a>
             </li>
             <li>
-                <a href="javascript:GED.openAddURL();"><i class=" icon-plane"></i> Site internet</a>
+                <a href="javascript:GED.openAddURL();"><i class=" icon-plane"></i> @Messages("ged.button.add.website")</a>
             </li>
         </ul>
     </div>
     <div class="row" >
     <div class=" span2 filtrer-element hide" style="margin-top:15px;">
         <b>
-            Filtrer par :
+            @Messages("ged.filters.title") :
         </b>
     </div>
 
     <div class=" span1 filtrer-element hide" style="margin-top:15px;">
-        <b>- type :</b>
+        <b>- @Messages("ged.filters.type") :</b>
     </div>
     <div class=" span7 filtrer-element hide" style="margin-top:15px;">
         <select id="filter" onchange="GED.filtrer(this);">
             <option value="" selected="selected">
-                Aucun
+                @Messages("ged.filters.type.option.no") 
             </option>
             <option value="directory">
-                Dossiers
+                 @Messages("ged.filters.type.option.dir") 
             </option>
             <option value="file">
-                Fichiers
+                @Messages("ged.filters.type.option.file") 
             </option>
         </select>
     </div>
@@ -80,40 +80,40 @@
         </div>
     <div class=" span1 filtrer-element hide">
         <b>
-            - nom :
+            - @Messages("ged.filters.name") :
         </b>
     </div>
     <div class=" span4 filtrer-element hide">
         <input type="text" id="filterOnName" class="span4 " data-provide="typeahead"
-               data-source="" onkeypress="GED.handleKeyPress(event,this)" placeholder="taper le nom ...">
+               data-source="" onkeypress="GED.handleKeyPress(event,this)" placeholder='@Messages("ged.filters.name.placeholder")'>
     </div>
     </div>
     <div class="row" >
     <div class=" span1 sort-element hide" style="margin-top:15px;">
         <b>
-            Trier par :
+            @Messages("ged.sorthings.title") :
         </b>
     </div>
     <div class=" span3 sort-element hide" style="margin-top:15px;">
         <select id="sortType" onchange="GED.sortElmnt();">
-            <option value="date" selected="selected">
-                Date
+            <option value="date" >
+                 @Messages("ged.sorthings.date") 
             </option>
-            <option value="name">
-                Nom
+            <option value="name" selected="selected">
+                @Messages("ged.sorthings.name") 
             </option>
             <option value="type">
-                Type
+                 @Messages("ged.sorthings.type") 
             </option>
         </select>
     </div>
     <div id="sortSens" class="btn-group span3  sort-element hide" style="margin-top:15px;"
          data-toggle="buttons-radio">
         <button id="Asc" type="button" class="btn active" onclick="GED.sortElmnt(this)">
-            Ascendant
+            @Messages("ged.sorthings.orders.asc")
         </button>
         <button id="Desc" type="button" class="btn" onclick="GED.sortElmnt(this)">
-            Descendant
+             @Messages("ged.sorthings.orders.desc")
         </button>
     </div>
         </div>
@@ -160,7 +160,7 @@
 <div class="modal hide" id="loadModal">
     <div class="modal-header">
         <h3>
-            Chargement en cours ...
+            @Messages("ged.loadmodal")
         </h3>
     </div>
 </div>
@@ -170,7 +170,7 @@
             x
         </button>
         <h3>
-            Ajouter un site internet
+            @Messages("ged.modal.add.website.title")
         </h3>
     </div>
     <div class="modal-body">
@@ -183,7 +183,7 @@
             <fieldset>
                 <div id="urlName_control_group" class="control-group">
                     <label class="control-label" for="urlName">
-                        Nom du lien :
+                         @Messages("ged.modal.add.website.field.linkname") :
                     </label>
                     <div class="controls">
                         <input name="name" type="text" class="input-xlarge" id="urlName">
@@ -191,12 +191,12 @@
                 </div>
                 <div id="adress_control_group" class="control-group">
                     <label class="control-label" for="adress">
-                        URL :
+                        @Messages("ged.modal.add.website.field.url") :
                     </label>
                     <div class="controls">
                         <input name="url" type="text" class="input-xlarge" id="adress">
                         <p class="help-block">
-                            Le nom et l' URL sont obligatoires.
+                           @Messages("ged.modal.add.website.field.url.help.block") 
                         </p>
                     </div>
                 </div>
@@ -204,8 +204,8 @@
         </form>
     </div>
     <div class="modal-footer">
-        <a href="#" class="btn" data-dismiss="modal">Fermer</a>
-        <a href="javascript:GED.addURL();" class="btn btn-primary">Ajouter</a>
+        <a href="#" class="btn" data-dismiss="modal">@Messages("postit.modal.button.close")</a>
+        <a href="javascript:GED.addURL();" class="btn btn-primary">@Messages("ged.button.add")</a>
     </div>
 </div>
 <div class="modal hide" id="addDirectoryModal">
@@ -214,7 +214,7 @@
             x
         </button>
         <h3>
-            Ajouter un dossier
+            @Messages("ged.modal.add.dir.title")
         </h3>
     </div>
     <div class="modal-body">
@@ -227,12 +227,12 @@
             <fieldset>
                 <div id="dirName_control_group" class="control-group">
                     <label class="control-label" for="dirName">
-                        Nom :
+                         @Messages("ged.modal.add.dir.field.name") :
                     </label>
                     <div class="controls">
                         <input type="text" class="input-xlarge" name="name" id="dirName">
                         <p class="help-block">
-                            Le nom du dossier est obligatoire.
+                            @Messages("ged.modal.add.dir.field.name.help.block")
                         </p>
                     </div>
                 </div>
@@ -240,8 +240,8 @@
         </form>
     </div>
     <div class="modal-footer">
-        <a href="#" class="btn" data-dismiss="modal">Fermer</a>
-        <a href="javascript:GED.createDir();" class="btn btn-primary">Cr&eacute;er</a>
+        <a href="#" class="btn" data-dismiss="modal">@Messages("postit.modal.button.close")</a>
+        <a href="javascript:GED.createDir();" class="btn btn-primary">@Messages("ged.modal.add.dir.button.create")</a>
     </div>
 </div>
 <div class="modal hide" id="addFileModal">
@@ -250,7 +250,7 @@
             x
         </button>
         <h3>
-            Ajouter un document
+            @Messages("ged.modal.add.doc.title")
         </h3>
     </div>
     <div class="modal-body">
@@ -265,7 +265,7 @@
                              ondragend="this.className = '';return false;">
                         </div>
                         <p style="text-align: center;">
-                            D&eacute;poser une document de votre bureau dans la zone
+                            @Messages("ged.modal.add.doc.field.help.block")
                         </p>
                         <p id="infos">
                         </p>
@@ -275,7 +275,7 @@
         </form>
     </div>
     <div class="modal-footer">
-        <a href="#" class="btn" data-dismiss="modal">Fermer</a>
+        <a href="#" class="btn" data-dismiss="modal">@Messages("postit.modal.button.close")</a>
     </div>
 </div>
 

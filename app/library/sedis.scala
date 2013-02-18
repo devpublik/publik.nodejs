@@ -1,4 +1,4 @@
-package org.sedis
+package library
 
 import redis.clients.jedis._
 

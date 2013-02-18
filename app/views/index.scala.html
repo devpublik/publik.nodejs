@@ -1,7 +1,7 @@
-@(params: scala.collection.immutable.List[PostIt],name:String)
+@(params: scala.collection.immutable.List[PostIt],name:String)(implicit lang: Lang)
 @import helper._
 @import helper.twitterBootstrap._
-@main("Publik - Accueil", name) {
+@main(Messages("title.welcome")(lang), name) {
 
 
 <div id="container-postit" class="hero-unit span10 droppable" style="display: inline; heigth:100%;">
@@ -18,14 +18,14 @@
 </div>
 <div id="buttons-pad" style="">
   <div>  <a class="btn btn-danger" type="button" data-toggle="modal" data-target="#create-postit"><i class="icon-plus icon-white"></i> Post-It</a>  </div>
-      <div style="margin-top:5px;">  <a class="btn btn-danger" type="button" href="@routes.Application.generateSpreadSheet"><i class="icon-plus icon-white"></i> Extraction</a>  </div>
+      <div style="margin-top:5px;">  <a class="btn btn-danger" type="button" href="@routes.Application.generateSpreadSheet"><i class="icon-plus icon-white"></i> @Messages("postit.button.extract")</a>  </div>
 </div>
 
 <!-- context menu -->
 <div id="context-menu-postit"  class="span2 bs-docs-sidebar hide context-menu-publik" >
     <ul class="nav nav-list bs-docs-sidenav  bg-publik " >
         <li class="nav-header">Post-It</li>
-        <li class="lienMenuPrincipal"><a href="#" onclick="POSTIT.deletePostIt();" class=""><i class="icon-remove"></i>Supprimer</a></li>
+        <li class="lienMenuPrincipal"><a href="#" onclick="POSTIT.deletePostIt();" class=""><i class="icon-remove"></i>@Messages("postit.context.menu.delete")</a></li>
     </ul>
 </div>
 
@@ -37,7 +37,7 @@
             &times;
         </button>
         <h3>
-            Création d'un nouveau Post-It
+            @Messages("postit.modal.title")
         </h3>
     </div>
     <div class="modal-body">
@@ -47,7 +47,7 @@
             <fieldset>
                 <div id="1_control_group" class="control-group">
                     <label class="control-label" for="title">
-                        Titre :
+                        @Messages("postit.modal.field.title") :
                     </label>
                     <div class="controls">
                         <input type="text" class="input-xlarge" id="title" name="title">
@@ -55,7 +55,7 @@
                 </div>
                 <div id="2_control_group" class="control-group">
                     <label class="control-label">
-                        Style du titre :
+                        @Messages("postit.modal.field.style.title") :
                     </label>
                     <div class="controls">
                         <div class="btn-toolbar ">
@@ -82,7 +82,7 @@
                 </div>
                 <div id="3_control_group" class="control-group">
                     <label class="control-label">
-                        Contenu :
+                        @Messages("postit.modal.field.contains") :
                     </label>
                     <div class="controls">
                         <textarea id="wysiwyg" rows="5" cols="40" name="contains" >
@@ -103,9 +103,9 @@
         </div>
     </div>
     <div class="modal-footer">
-        <a href="#" class="btn" onclick="$('#create-postit').modal('hide');">Fermer</a>
-        <a href="#" class="btn " data-toggle="button" onclick="POSTIT.changePreviewCreation();">Prévisalisation</a>
-        <a href="#" class="btn btn-primary" onclick="POSTIT.createPostIt();">Créer</a>
+        <a href="#" class="btn" onclick="$('#create-postit').modal('hide');">@Messages("postit.modal.button.close")</a>
+        <a href="#" class="btn " data-toggle="button" onclick="POSTIT.changePreviewCreation();">@Messages("postit.modal.button.preview")</a>
+        <a href="#" class="btn btn-primary" onclick="POSTIT.createPostIt();">@Messages("postit.modal.button.create")</a>
     </div>
 </div>
 </div>

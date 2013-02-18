@@ -1,4 +1,4 @@
-@(title: String, page: String)(content: Html)
+@(title: String, page: String)(content: Html)(implicit lang: Lang)
 @import models.ApplicationPage._
 <!DOCTYPE html>
 <html>
@@ -50,7 +50,7 @@
                         </li>
                         <li>
                             <form id="formSearchGed" action="/ged/" class="navbar-search " method="GET">
-                                <input type="text" class="search-query" style="width: 125px;" placeholder="Documentation" id="searchGed">
+                                <input type="text" class="search-query" style="width: 125px;" placeholder='@Messages("navbar.field.search")' id="searchGed">
                             </form>
                         </li>
                     </ul>
@@ -62,7 +62,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a id="gedRefresh" href="/ged/update"><i class="icon-refresh"></i> Recharger</a>
+                                    <a id="gedRefresh" href="/ged/update"><i class="icon-refresh"></i> @Messages("navbar.field.docs.reload")</a>
                                 </li>
 
                             </ul>
@@ -78,13 +78,16 @@
                 </li>
 
                 <li class=" @if(page == postit.toString()){active}  lienMenuPrincipal">
-                    <a href="/" class=""><i class="icon-home "></i>   Accueil   </a>
+                    <a href="/" class=""><i class="icon-home "></i>   @Messages("menu.welcome")   </a>
                 </li>
                 <li class="  @if(page == ged.toString()){active} lienMenuPrincipal">
-                    <a href="@routes.Documents.index" class=" "><i class=" icon-hdd"></i>   Documentation</a>
+                    <a href="@routes.Documents.index" class=" "><i class=" icon-hdd"></i>   @Messages("menu.ged")</a>
                 </li>
                 <li class=" @if(page == timer.toString()){active} lienMenuPrincipal">
                     <a href="@routes.Timer.index" class=" "><i class="icon-time "></i>   Timer</a>
+                </li>
+                <li class=" @if(page == projects.toString()){active} lienMenuPrincipal">
+                    <a href="@routes.Projects.index" class=" "><i class="icon-folder-open"></i>   @Messages("menu.projects")</a>
                 </li>
             </ul>
         </div>

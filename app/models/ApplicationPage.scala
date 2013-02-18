@@ -9,5 +9,5 @@ package models
  */
 object ApplicationPage extends Enumeration {
   type ApplicationPage = Value
-  val postit, ged, timer = Value
+  val postit, ged, timer, projects = Value
 }

@@ -10,12 +10,14 @@ import models.ApplicationPage.postit
 import models.PostIt
 import scala.Predef._
 import scala.Some
+import play.i18n._
 import java.io.File
 import java.io.FileOutputStream
 import org.apache.poi.xssf.usermodel._
 import java.io.ByteArrayOutputStream
 import org.apache.poi.ss.usermodel.IndexedColors
 import org.apache.poi.hssf.usermodel.HSSFCellStyle
+import java.util.Locale
 
 /**
  * Main Page.
@@ -64,7 +66,8 @@ object Application extends Controller {
   /**
    * the main Url.
    */
-  def index = Action {
+  def index = Action  {
+   // Locale.setDefault(Lang.forCode("en").toLocale);
     Ok(views.html.index(createList(), menuIndex))
   }
 

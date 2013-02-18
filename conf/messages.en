@@ -1,0 +1,73 @@
+title.welcome = Publik - Welcome Page
+
+navbar.field.search = Document name
+navbar.field.docs.reload = Reload docs
+
+menu.welcome=Welcome
+menu.ged = Documents
+menu.projects = Projects
+
+postit.button.extract = Extract.
+postit.modal.title = Create a new Post-It
+postit.modal.field.title = Title
+postit.modal.field.style.title = Style of the title
+postit.modal.field.contains = Datas
+postit.modal.button.close = Close
+postit.modal.button.create = Create
+postit.modal.button.preview = Preview
+postit.context.menu.delete = Delete
+
+ged.title.welcome = Publik - Documents
+ged.data.root = ROOT
+ged.buttons.title = Actions
+ged.button.filter = Filter
+ged.button.sorting = Sort
+ged.button.reload = Reload
+ged.button.add = Add
+ged.button.add.directory = Directory
+ged.button.add.docs = Documents
+ged.button.add.website = Web Site
+ged.filters.title = Filter by
+ged.filters.type = type
+ged.filters.type.option.no = None
+ged.filters.type.option.dir = Directory
+ged.filters.type.option.file = Files
+ged.filters.name = name
+ged.filters.name.placeholder = type the name ...
+ged.sorthings.title = Sort by
+ged.sorthings.date = Date
+ged.sorthings.name = Name
+ged.sorthings.type = Type
+ged.sorthings.orders.asc = Ascending
+ged.sorthings.orders.desc = Descending
+ged.loadmodal =  Loading ...
+ged.modal.add.website.title = Add a web site
+ged.modal.add.website.field.linkname = Name of the link
+ged.modal.add.website.field.url = Url
+ged.modal.add.website.field.url.help.block = The name and the url are required.
+ged.modal.add.dir.title = Add a directory
+ged.modal.add.dir.field.name = Name
+ged.modal.add.dir.field.name.help.block = The name of the directory is required.
+ged.modal.add.dir.button.create = Create
+ged.modal.add.doc.title = Add a file
+ged.modal.add.doc.field.help.block = Drag and drop a document in the field.
+
+
+timer.title.welcome = Publik - Timer
+timer.field.hour = Hour
+timer.field.minute = Minute
+timer.field.minute.help.block = You must set the time (HH24:MI).
+timer.field.ring = Ring
+timer.button.launch = Launch
+timer.button.stop = Stop
+timer.button.sounds = Sounds
+timer.modal.sounds.title = Actions
+timer.modal.sounds.button.add = Add
+timer.modal.sounds.button.del = Delete
+timer.modal.sounds.del.title = Select a sound
+timer.modal.sounds.add.field.name = Name
+timer.modal.sounds.add.field.help.block = Drag and drop a mp3.
+timer.modal.button.next = Next
+timer.modal.button.previous = Previous
+timer.modal.button.validate = Validate
+timer.modal.label.error = Error

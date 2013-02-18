@@ -1,0 +1,73 @@
+title.welcome = Publik - Accueil
+
+navbar.field.search = Documentation
+navbar.field.docs.reload = Recharger
+
+menu.welcome = Accueil
+menu.ged = Documentation
+menu.projects = Projets
+
+postit.button.extract = Extraction
+postit.modal.title = Création d'un nouveau Post-It
+postit.modal.field.title = Titre
+postit.modal.field.style.title = Style du titre
+postit.modal.field.contains = Contenu
+postit.modal.button.close = Fermer
+postit.modal.button.create = Créer
+postit.modal.button.preview = Prévisualisation
+postit.context.menu.delete = Suppression
+
+ged.title.welcome = Publik - Documents
+ged.data.root = RACINE
+ged.buttons.title = Actions
+ged.button.filter = Filtrer
+ged.button.sorting = Trier
+ged.button.reload = Réinitialiser
+ged.button.add = Ajouter
+ged.button.add.directory = Dossier
+ged.button.add.docs = Documents
+ged.button.add.website = Site internet
+ged.filters.title = Filtrer par
+ged.filters.type = type
+ged.filters.type.option.no = Aucun
+ged.filters.type.option.dir = Dossiers
+ged.filters.type.option.file = Fichiers
+ged.filters.name = nom
+ged.filters.name.placeholder = taper le nom ...
+ged.sorthings.title = Trier par
+ged.sorthings.date = Date
+ged.sorthings.name = Nom
+ged.sorthings.type = Type
+ged.sorthings.orders.asc = Ascendant
+ged.sorthings.orders.desc = Descendant
+ged.loadmodal =  Chargement en cours ...
+ged.modal.add.website.title = Ajouter un site internet
+ged.modal.add.website.field.linkname = Nom du lien
+ged.modal.add.website.field.url = URL
+ged.modal.add.website.field.url.help.block = Le nom et l' URL sont obligatoires.
+ged.modal.add.dir.title = Ajouter un dossier
+ged.modal.add.dir.field.name = Nom
+ged.modal.add.dir.field.name.help.block = Le nom du dossier est obligatoire.
+ged.modal.add.dir.button.create = Cr&eacute;er
+ged.modal.add.doc.title = Ajouter un document
+ged.modal.add.doc.field.help.block = D&eacute;poser une document de votre bureau dans la zone.
+
+timer.title.welcome = Publik - Timer
+timer.field.hour = Heure
+timer.field.minute = Minute
+timer.field.minute.help.block = Merci de préciser le temps de l'exercice (HH24:MI).
+timer.field.ring = Sonnerie
+timer.button.launch = Lancer
+timer.button.stop = Arrêter
+timer.button.sounds = Sons
+timer.modal.sounds.title = Type d'actions
+timer.modal.sounds.button.add = Ajouter
+timer.modal.sounds.button.del = Supprimer
+timer.modal.sounds.del.title = Sélectionner les sons à supprimer
+timer.modal.sounds.add.field.name = Nom
+timer.modal.sounds.add.field.help.block = Déposer un nouveau mp3 dans la zone pour valider l'ajout.
+timer.modal.button.next = Suivant
+timer.modal.button.previous = Précédent
+timer.modal.button.validate = Valider
+timer.modal.label.error = Erreur
+
